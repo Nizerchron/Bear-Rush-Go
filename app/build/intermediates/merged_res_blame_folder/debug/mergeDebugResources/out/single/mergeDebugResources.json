@@ -1,0 +1,134 @@
+[
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xxxhdpi_geokar.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xxxhdpi/geokar.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xxhdpi_bg_welcome_header.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xxhdpi/bg_welcome_header.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/xml_backup_rules.xml.flat",
+        "source": "com.bearrushmod.app-main-6:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-hdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xhdpi_geokar.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xhdpi/geokar.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-hdpi_bg_welcome_header.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-hdpi/bg_welcome_header.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xxhdpi_geokar.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xxhdpi/geokar.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-mdpi_bg_welcome_header.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-mdpi/bg_welcome_header.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xxxhdpi_bg_welcome_header.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xxxhdpi/bg_welcome_header.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-hdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/xml_data_extraction_rules.xml.flat",
+        "source": "com.bearrushmod.app-main-6:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-mdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-mdpi_geokar.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-mdpi/geokar.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-hdpi_geokar.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-hdpi/geokar.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable-xhdpi_bg_welcome_header.png.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable-xhdpi/bg_welcome_header.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.bearrushmod.app-main-6:/mipmap-xhdpi/ic_launcher_foreground.png"
+    }
+]

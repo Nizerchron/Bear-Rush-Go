@@ -1,0 +1,358 @@
+<div style="background:#19191c;border:0.5px solid rgba(255,255,255,0.10);border-radius:var(--border-radius-lg);padding:1.25rem;color:#f2f2f4">
+<style>
+.da-drop{border:1px dashed rgba(255,255,255,0.22);border-radius:var(--border-radius-lg);padding:2rem 1rem;text-align:center;cursor:pointer}
+.da-drop:hover{background:#202024}
+.da-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:1rem}
+.da-card{background:#202024;border-radius:var(--border-radius-md);padding:10px;text-align:center}
+.da-card img{max-width:100%;border-radius:4px;display:block;margin:0 auto 6px}
+.da-badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:var(--border-radius-md)}
+.da-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin:1rem 0}
+.da-log{font-size:13px;color:#9a9aa2;margin-top:1rem;display:flex;flex-direction:column;gap:4px}
+.da-label{font-size:13px;color:#9a9aa2;display:block;margin-bottom:4px}
+.da-btn{background:#26262c;color:#f2f2f4;border:0.5px solid rgba(255,255,255,0.14);border-radius:var(--border-radius-md);padding:8px 14px;font-size:14px;cursor:pointer}
+.da-btn:hover{background:#2e2e35}
+.da-btn:disabled{opacity:0.45;cursor:not-allowed}
+.da-input,.da-select{background:#101012;color:#f2f2f4;border:0.5px solid rgba(255,255,255,0.14);border-radius:var(--border-radius-md);padding:8px 10px;font-size:14px}
+</style>
+
+<h2 class="sr-only">Generator aset Android dua preset rasio dengan tema gelap tetap, dari satu gambar menjadi lima ukuran densitas dan paket ZIP</h2>
+
+<input type="file" id="da-file" accept="image/*" style="display:none" />
+
+<div class="da-row" style="margin-top:0">
+  <div>
+    <label class="da-label">Preset ukuran</label>
+    <select class="da-select" id="da-preset" style="width:220px">
+      <option value="ratio2161">2.16:1 - header welcome</option>
+      <option value="ratio169">16:9 - drawable</option>
+    </select>
+  </div>
+</div>
+
+<div class="da-drop" id="da-dropzone">
+  <i class="ti ti-upload" style="font-size:24px;color:#9a9aa2" aria-hidden="true"></i>
+  <p style="margin:8px 0 0;font-size:14px;color:#9a9aa2" id="da-drop-hint">Klik atau seret gambar ke sini</p>
+</div>
+
+<div id="da-preview" style="display:none;margin-top:1rem">
+  <div class="da-row" style="align-items:center;margin:0">
+    <img id="da-preview-img" style="width:96px;height:54px;object-fit:cover;border-radius:var(--border-radius-md);border:0.5px solid rgba(255,255,255,0.14)" />
+    <div>
+      <p id="da-dims" style="margin:0;font-size:14px;font-weight:500"></p>
+      <span id="da-ratio-badge" class="da-badge"></span>
+    </div>
+  </div>
+</div>
+
+<div class="da-row">
+  <div>
+    <label class="da-label">Nama file</label>
+    <input type="text" class="da-input" id="da-filename" value="bg_welcome_header.png" style="width:220px" />
+  </div>
+  <div>
+    <label class="da-label">Folder prefix</label>
+    <select class="da-select" id="da-prefix" style="width:140px">
+      <option value="mipmap">mipmap-*</option>
+      <option value="drawable">drawable-*</option>
+    </select>
+  </div>
+  <button class="da-btn" id="da-generate" disabled><i class="ti ti-bolt" aria-hidden="true" style="margin-right:4px"></i>Buat semua ukuran</button>
+</div>
+
+<div class="da-grid" id="da-grid"></div>
+<div class="da-log" id="da-log"></div>
+
+<div class="da-row" id="da-download-row" style="display:none">
+  <button class="da-btn" id="da-download"><i class="ti ti-download" aria-hidden="true" style="margin-right:4px"></i>Unduh ZIP</button>
+  <span id="da-zip-info" style="font-size:13px;color:#9a9aa2"></span>
+</div>
+</div>
+
+<script>
+(function(){
+  var PRESETS = {
+    ratio2161: {
+      label: '2.16:1 header welcome',
+      ratio: 1440/667,
+      defaultPrefix: 'mipmap',
+      defaultFilename: 'bg_welcome_header.png',
+      sizes: [
+        {key:'mdpi', w:320, h:148},
+        {key:'hdpi', w:480, h:222},
+        {key:'xhdpi', w:720, h:333},
+        {key:'xxhdpi', w:1080, h:500},
+        {key:'xxxhdpi', w:1440, h:667}
+      ]
+    },
+    ratio169: {
+      label: '16:9 drawable',
+      ratio: 16/9,
+      defaultPrefix: 'drawable',
+      defaultFilename: 'bg_widescreen_16x9.png',
+      sizes: [
+        {key:'mdpi', w:320, h:180},
+        {key:'hdpi', w:480, h:270},
+        {key:'xhdpi', w:640, h:360},
+        {key:'xxhdpi', w:960, h:540},
+        {key:'xxxhdpi', w:1280, h:720}
+      ]
+    }
+  };
+
+  var currentPresetKey = 'ratio2161';
+  var sourceImg = null;
+  var zipBlobUrl = null;
+
+  var fileInput = document.getElementById('da-file');
+  var dropzone = document.getElementById('da-dropzone');
+  var dropHint = document.getElementById('da-drop-hint');
+  var presetSelect = document.getElementById('da-preset');
+  var previewBox = document.getElementById('da-preview');
+  var previewImg = document.getElementById('da-preview-img');
+  var dimsEl = document.getElementById('da-dims');
+  var ratioBadge = document.getElementById('da-ratio-badge');
+  var genBtn = document.getElementById('da-generate');
+  var grid = document.getElementById('da-grid');
+  var logEl = document.getElementById('da-log');
+  var downloadRow = document.getElementById('da-download-row');
+  var downloadBtn = document.getElementById('da-download');
+  var zipInfo = document.getElementById('da-zip-info');
+  var filenameInput = document.getElementById('da-filename');
+  var prefixSelect = document.getElementById('da-prefix');
+
+  function knownDefaults(){
+    return Object.keys(PRESETS).map(function(k){ return PRESETS[k].defaultFilename; });
+  }
+
+  function updateHint(){
+    var p = PRESETS[currentPresetKey];
+    var base = p.sizes[p.sizes.length-1];
+    dropHint.textContent = 'Klik atau seret gambar ke sini (disarankan ' + base.w + 'x' + base.h + ')';
+  }
+  updateHint();
+
+  function evaluateRatio(){
+    var p = PRESETS[currentPresetKey];
+    var ratio = sourceImg.naturalWidth / sourceImg.naturalHeight;
+    var diff = Math.abs(ratio - p.ratio) / p.ratio;
+    dimsEl.textContent = sourceImg.naturalWidth + ' x ' + sourceImg.naturalHeight + ' px';
+    if(diff < 0.02){
+      ratioBadge.textContent = 'Rasio cocok';
+      ratioBadge.style.background = 'rgba(29,158,117,0.18)';
+      ratioBadge.style.color = '#5dcaa5';
+    } else {
+      ratioBadge.textContent = 'Rasio beda, akan di-crop tengah';
+      ratioBadge.style.background = 'rgba(186,117,23,0.20)';
+      ratioBadge.style.color = '#fac775';
+    }
+  }
+
+  presetSelect.addEventListener('change', function(){
+    var wasDefaultFilename = knownDefaults().indexOf(filenameInput.value.trim().toLowerCase()) !== -1;
+    currentPresetKey = presetSelect.value;
+    var p = PRESETS[currentPresetKey];
+    updateHint();
+    if(wasDefaultFilename){ filenameInput.value = p.defaultFilename; }
+    prefixSelect.value = p.defaultPrefix;
+    grid.innerHTML = '';
+    logEl.innerHTML = '';
+    downloadRow.style.display = 'none';
+    if(sourceImg) evaluateRatio();
+  });
+
+  dropzone.addEventListener('click', function(){ fileInput.click(); });
+  dropzone.addEventListener('dragover', function(e){ e.preventDefault(); });
+  dropzone.addEventListener('drop', function(e){
+    e.preventDefault();
+    if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', function(e){
+    if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+  });
+
+  function handleFile(file){
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      sourceImg = img;
+      previewImg.src = url;
+      previewBox.style.display = 'block';
+      evaluateRatio();
+      genBtn.disabled = false;
+      grid.innerHTML = '';
+      downloadRow.style.display = 'none';
+      logEl.innerHTML = '';
+    };
+    img.src = url;
+  }
+
+  function sanitizeName(name){
+    var n = name.trim().toLowerCase();
+    if(!n) n = PRESETS[currentPresetKey].defaultFilename;
+    if(!/\.png$/.test(n)) n = n.replace(/\.[a-z0-9]+$/, '') + '.png';
+    n = n.replace(/[^a-z0-9_.]/g, '_');
+    if(!/^[a-z]/.test(n)) n = 'img_' + n;
+    return n;
+  }
+
+  function drawCover(img, targetW, targetH){
+    var canvas = document.createElement('canvas');
+    canvas.width = targetW; canvas.height = targetH;
+    var ctx = canvas.getContext('2d');
+    var srcRatio = img.naturalWidth / img.naturalHeight;
+    var dstRatio = targetW / targetH;
+    var sx, sy, sw, sh;
+    if(srcRatio > dstRatio){ sh = img.naturalHeight; sw = sh*dstRatio; sy=0; sx=(img.naturalWidth-sw)/2; }
+    else { sw = img.naturalWidth; sh = sw/dstRatio; sx=0; sy=(img.naturalHeight-sh)/2; }
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH);
+    return canvas;
+  }
+
+  function crc32(buf){
+    if(!crc32.table){
+      var t = [];
+      for(var n=0;n<256;n++){
+        var c=n;
+        for(var k=0;k<8;k++){ c = (c & 1) ? (0xEDB88320 ^ (c>>>1)) : (c>>>1); }
+        t[n]=c>>>0;
+      }
+      crc32.table = t;
+    }
+    var crc = 0 ^ (-1);
+    for(var i=0;i<buf.length;i++){ crc = (crc>>>8) ^ crc32.table[(crc ^ buf[i]) & 0xFF]; }
+    return (crc ^ (-1)) >>> 0;
+  }
+
+  function w16(arr, off, v){ arr[off]=v&0xFF; arr[off+1]=(v>>>8)&0xFF; }
+  function w32(arr, off, v){ arr[off]=v&0xFF; arr[off+1]=(v>>>8)&0xFF; arr[off+2]=(v>>>16)&0xFF; arr[off+3]=(v>>>24)&0xFF; }
+
+  function createZip(files){
+    var localParts = [];
+    var centralParts = [];
+    var offset = 0;
+    var now = new Date();
+    var time = (now.getHours()<<11)|(now.getMinutes()<<5)|(now.getSeconds()>>1);
+    var dosDate = ((Math.max(now.getFullYear(),1980)-1980)<<9)|((now.getMonth()+1)<<5)|now.getDate();
+
+    files.forEach(function(file){
+      var nameBytes = new TextEncoder().encode(file.name);
+      var data = file.data;
+      var crc = crc32(data);
+      var size = data.length;
+
+      var local = new Uint8Array(30 + nameBytes.length);
+      w32(local,0,0x04034b50); w16(local,4,20); w16(local,6,0); w16(local,8,0);
+      w16(local,10,time); w16(local,12,dosDate); w32(local,14,crc);
+      w32(local,18,size); w32(local,22,size); w16(local,26,nameBytes.length); w16(local,28,0);
+      local.set(nameBytes,30);
+
+      localParts.push(local, data);
+      var localSize = local.length + data.length;
+
+      var central = new Uint8Array(46 + nameBytes.length);
+      w32(central,0,0x02014b50); w16(central,4,20); w16(central,6,20); w16(central,8,0);
+      w16(central,10,0); w16(central,12,time); w16(central,14,dosDate); w32(central,16,crc);
+      w32(central,20,size); w32(central,24,size); w16(central,28,nameBytes.length);
+      w16(central,30,0); w16(central,32,0); w16(central,34,0); w16(central,36,0);
+      w32(central,38,0); w32(central,42,offset);
+      central.set(nameBytes,46);
+
+      centralParts.push(central);
+      offset += localSize;
+    });
+
+    var centralStart = offset;
+    var centralSize = 0;
+    centralParts.forEach(function(c){ centralSize += c.length; });
+
+    var end = new Uint8Array(22);
+    w32(end,0,0x06054b50); w16(end,4,0); w16(end,6,0);
+    w16(end,8,files.length); w16(end,10,files.length);
+    w32(end,12,centralSize); w32(end,16,centralStart); w16(end,20,0);
+
+    var allParts = localParts.concat(centralParts).concat([end]);
+    var total = 0;
+    allParts.forEach(function(p){ total += p.length; });
+    var result = new Uint8Array(total);
+    var pos = 0;
+    allParts.forEach(function(p){ result.set(p,pos); pos += p.length; });
+    return new Blob([result], {type:'application/zip'});
+  }
+
+  genBtn.addEventListener('click', function(){
+    if(!sourceImg) return;
+    genBtn.disabled = true;
+    grid.innerHTML = '';
+    logEl.innerHTML = '';
+    downloadRow.style.display = 'none';
+
+    var p = PRESETS[currentPresetKey];
+    var fname = sanitizeName(filenameInput.value);
+    var prefix = prefixSelect.value;
+    var files = [];
+    var pending = p.sizes.length;
+
+    p.sizes.forEach(function(t){
+      var canvas = drawCover(sourceImg, t.w, t.h);
+      canvas.toBlob(function(blob){
+        blob.arrayBuffer().then(function(buf){
+          var data = new Uint8Array(buf);
+          var path = 'res/' + prefix + '-' + t.key + '/' + fname;
+          files.push({name: path, data: data, key: t.key, w: t.w, h: t.h});
+
+          var card = document.createElement('div');
+          card.className = 'da-card';
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(blob);
+          img.style.height = '36px';
+          img.style.objectFit = 'cover';
+          var label = document.createElement('p');
+          label.style.margin = '0'; label.style.fontSize = '12px'; label.style.fontWeight = '500';
+          label.textContent = t.key;
+          var dimsP = document.createElement('p');
+          dimsP.style.margin = '0'; dimsP.style.fontSize = '11px'; dimsP.style.color = '#9a9aa2';
+          dimsP.textContent = t.w + 'x' + t.h;
+          card.appendChild(img); card.appendChild(label); card.appendChild(dimsP);
+          grid.appendChild(card);
+
+          pending -= 1;
+          if(pending === 0){
+            files.sort(function(a,b){
+              return p.sizes.findIndex(function(x){return x.key===a.key;}) - p.sizes.findIndex(function(x){return x.key===b.key;});
+            });
+            var checks = [
+              files.length + ' dari ' + p.sizes.length + ' ukuran berhasil dibuat (preset ' + p.label + ')',
+              'Setiap kanvas diverifikasi sesuai lebar x tinggi target',
+              'Nama file disesuaikan ke format resource Android (' + fname + ')',
+              'Struktur folder: res/' + prefix + '-{density}/' + fname
+            ];
+            checks.forEach(function(c){
+              var line = document.createElement('div');
+              line.innerHTML = '<i class="ti ti-check" style="color:#5dcaa5;margin-right:6px" aria-hidden="true"></i>' + c;
+              logEl.appendChild(line);
+            });
+            var zipBlob = createZip(files);
+            if(zipBlobUrl) URL.revokeObjectURL(zipBlobUrl);
+            zipBlobUrl = URL.createObjectURL(zipBlob);
+            zipInfo.textContent = Math.round(zipBlob.size/1024) + ' KB, ' + files.length + ' file';
+            downloadRow.style.display = 'flex';
+            genBtn.disabled = false;
+          }
+        });
+      }, 'image/png');
+    });
+  });
+
+  downloadBtn.addEventListener('click', function(){
+    if(!zipBlobUrl) return;
+    var a = document.createElement('a');
+    a.href = zipBlobUrl;
+    a.download = 'android-' + currentPresetKey + '-assets.zip';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+})();
+</script>

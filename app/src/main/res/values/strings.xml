@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bear Rush Mod</string>
+    <string name="search_hint">Search presets...</string>
+    <string name="categories">Categories</string>
+    <string name="popular_presets">Popular Presets</string>
+    <string name="download">Download</string>
+    <string name="free">Free</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="download_sba">Download SBA Geokar</string>
+</resources>

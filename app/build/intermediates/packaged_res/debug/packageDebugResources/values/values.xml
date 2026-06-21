@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bear Rush Mod</string>
+    <string name="categories">Categories</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="download">Download</string>
+    <string name="download_sba">Download SBA Geokar</string>
+    <string name="free">Free</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="popular_presets">Popular Presets</string>
+    <string name="search_hint">Search presets...</string>
+    <style name="Theme.BearRushMod" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

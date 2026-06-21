@@ -1,0 +1,551 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:2:1-34:12
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:2:1-53:12
+MERGED from [com.google.android.gms:play-services-appset:16.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\76ee41b95ec8bdd50d4a08e5e8c34a42\transformed\jetified-play-services-appset-16.1.0\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\13ff74eb1d28af2037b0a20938e6468d\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.navigation:navigation-common:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4d59ccdd198269731e02d5fb1df2fcc1\transformed\navigation-common-2.8.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\71f91020344e6744126f5e72b1213f4e\transformed\navigation-runtime-2.8.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d9dcaaca12fa16803457d982d5321fcf\transformed\navigation-common-ktx-2.8.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f48091bef1185bde479e536540ed21b3\transformed\navigation-runtime-ktx-2.8.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\7a0b4d31fa3d8782e5559b2c39410947\transformed\jetified-navigation-compose-2.8.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\501ebaea409782e1d84435c32b2cfe1c\transformed\jetified-material3-release\AndroidManifest.xml:17:1-22:12
+MERGED from [io.coil-kt:coil-compose:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6b71969e8559997bd4bcd6d5d165fe79\transformed\jetified-coil-compose-2.6.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6804c049f97fc6fd2878b95f89fd5f76\transformed\jetified-coil-compose-base-2.6.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\326cf68d14a971a93997744fc1cc6dad\transformed\jetified-accompanist-drawablepainter-0.32.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.material:material-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b8bc713c61554d821aaaaf685cc352b4\transformed\jetified-material-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\fd9f6384275e2dbfbda6c28ae952bbdb\transformed\jetified-animation-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f1039d02c19c51d39497f20d812b15e\transformed\jetified-material-ripple-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4881e5fb71985f080d44fa9c4dce30e9\transformed\jetified-animation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b1c8adb6fc5362fa79bb29867c891a4b\transformed\jetified-foundation-layout-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2bb0235b5bbbeb3ad0626b5cfc0d7743\transformed\jetified-foundation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\921fd8cd2353cf5cf5e0818e062ffdc7\transformed\jetified-ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\31eccc65f30bef3affd0b48434936521\transformed\jetified-ui-unit-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d1814b389a03f06653d4526b1bd0786a\transformed\jetified-ui-geometry-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\451de4750a443f9cdccd61ffc6cabf0a\transformed\jetified-ui-util-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f2654b28a0398ba33d5a328a77ce0da6\transformed\jetified-ui-text-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f9e5135eb4053b7c9e4bbb4050d0d0c5\transformed\jetified-ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\cac967daafbbcd288c9884e3992c4772\transformed\jetified-ui-graphics-release\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bb46a65b11b0682b35e6af1ea1d07623\transformed\jetified-coil-2.6.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\89ea2d388cd5930f504264928ed4a4fc\transformed\jetified-coil-base-2.6.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.fragment:fragment:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\93b438e4438c28375c5734d247d5a8a1\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4188d5e827d6892185129d32054b1b5d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dd2a8d52d23dbc37c42079c5d4f75007\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\627f71686e6ef5001c489b09fda7333c\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5b1b9e43900df27308c34978d555f262\transformed\jetified-lifecycle-livedata-core-ktx-2.8.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b258612d897be571e09f06d8bc5d9faa\transformed\lifecycle-livedata-2.8.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8c8b664fb1e225278564e39b213c8045\transformed\jetified-lifecycle-runtime-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8e07cd489c5f8ffd8002e5ea0419d718\transformed\lifecycle-livedata-core-2.8.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b0fe8a24b8e7d11b6fa2b9c2276f35a2\transformed\jetified-lifecycle-viewmodel-savedstate-2.8.6\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06e7241e1e081587564c99a228984fa3\transformed\lifecycle-viewmodel-2.8.6\AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\986cd721b0c6bcc92765f2959442bbe7\transformed\jetified-lifecycle-viewmodel-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\913bd8062ce71981d189643030e2b0ca\transformed\jetified-lifecycle-runtime-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f44a7ca6ef74650eff76faa060ffae7e\transformed\jetified-lifecycle-viewmodel-ktx-2.8.6\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d43b8b8a9396acb72e0170637da0c4e9\transformed\jetified-lifecycle-runtime-ktx-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5f29a6f1221884f1ed2146900c69a71a\transformed\jetified-lifecycle-viewmodel-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8a6aaca4ecc6d6d94774e32eaab6bb27\transformed\jetified-material-icons-extended-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\ed388df780ec35c91294d869acc95060\transformed\jetified-material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\28a753664967682843f86485fb5b9813\transformed\jetified-ui-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.activity:activity-compose:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2a30a8016b2d11b0a38ba5884618fb0d\transformed\jetified-activity-compose-1.9.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\753eb8850f72a6007201e32150e13088\transformed\jetified-activity-ktx-1.9.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\66f15a624c8491fdbd5fc81741f3c829\transformed\jetified-activity-1.9.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\3cd5f86be4d330ea075090803c829f5c\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\aa06c65f8ad6c08a3277e6b35f62a426\transformed\jetified-autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\12ee5850016b480c1ba5d1fe6d27f9ca\transformed\jetified-graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\30f27787f0e99524e9d2fe982a263504\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\077b4e1644c68ccfe54323343ef7f7b2\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\eee2b582beb287dd3633deca33e3a78b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e6e15afd4f8c07711e943caec4d6ef59\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2b5706b816bd1908173e3a319c29e77a\transformed\jetified-customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2038633fe975e11cf9af54ef1b8b8c53\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\67e6c3308ae7f0ab582bbd7b6afe2c77\transformed\jetified-datastore-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\754f582abd10c4a0c10a7ea36168880f\transformed\jetified-datastore-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c9474168259655bdeb97acd6ddc51b6d\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\20d81382d6ddf2b50d6efa17d1e894ff\transformed\jetified-runtime-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e1444accebe523d6a386c280c0caefc7\transformed\jetified-runtime-saveable-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\75356c8ce93268ce88037c5da74d1b99\transformed\jetified-annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dc3e3e02605b039c471d51dceb673e59\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [com.startapp:json:1.0.2] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5fa28dd1b3e1593a5073c24e04d93968\transformed\jetified-json-1.0.2\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\18b005af1a9e42ef8af16eae67a50593\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b12cdcba68f32cfa25140c365bcf2e98\transformed\exifinterface-1.3.7\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c39e3bf925f4508202ce9cb21952d146\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a3acc7b56d56a2a8d47426cfc07f49a1\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:7:5-67
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:6:5-79
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:9:5-79
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:7:5-79
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:12:5-79
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:8:5-108
+	android:maxSdkVersion
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:8:79-105
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:8:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:9:5-107
+	android:maxSdkVersion
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:9:78-104
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:9:22-77
+uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:10:5-82
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:10:22-79
+application
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:12:5-32:19
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:12:5-32:19
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:21:5-51:19
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:21:5-51:19
+MERGED from [com.google.android.gms:play-services-appset:16.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\76ee41b95ec8bdd50d4a08e5e8c34a42\transformed\jetified-play-services-appset-16.1.0\AndroidManifest.xml:6:5-20
+MERGED from [com.google.android.gms:play-services-appset:16.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\76ee41b95ec8bdd50d4a08e5e8c34a42\transformed\jetified-play-services-appset-16.1.0\AndroidManifest.xml:6:5-20
+MERGED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\13ff74eb1d28af2037b0a20938e6468d\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\13ff74eb1d28af2037b0a20938e6468d\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:5:5-7:19
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:5:5-7:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dc3e3e02605b039c471d51dceb673e59\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dc3e3e02605b039c471d51dceb673e59\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:20:9-35
+	android:label
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:19:9-41
+	android:fullBackupContent
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:18:9-54
+	android:roundIcon
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:16:9-48
+	tools:targetApi
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:22:9-29
+	android:icon
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:15:9-43
+	android:allowBackup
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:13:9-35
+	android:theme
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:21:9-49
+	android:dataExtractionRules
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:17:9-65
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:14:9-39
+activity#com.bearrushmod.MainActivity
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:23:9-31:20
+	android:exported
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:25:13-36
+	android:theme
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:26:13-53
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:24:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:27:13-30:29
+action#android.intent.action.MAIN
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:29:17-77
+	android:name
+		ADDED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:29:27-74
+uses-sdk
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\76ee41b95ec8bdd50d4a08e5e8c34a42\transformed\jetified-play-services-appset-16.1.0\AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.gms:play-services-appset:16.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\76ee41b95ec8bdd50d4a08e5e8c34a42\transformed\jetified-play-services-appset-16.1.0\AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\13ff74eb1d28af2037b0a20938e6468d\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\13ff74eb1d28af2037b0a20938e6468d\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4d59ccdd198269731e02d5fb1df2fcc1\transformed\navigation-common-2.8.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4d59ccdd198269731e02d5fb1df2fcc1\transformed\navigation-common-2.8.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\71f91020344e6744126f5e72b1213f4e\transformed\navigation-runtime-2.8.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\71f91020344e6744126f5e72b1213f4e\transformed\navigation-runtime-2.8.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d9dcaaca12fa16803457d982d5321fcf\transformed\navigation-common-ktx-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d9dcaaca12fa16803457d982d5321fcf\transformed\navigation-common-ktx-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f48091bef1185bde479e536540ed21b3\transformed\navigation-runtime-ktx-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f48091bef1185bde479e536540ed21b3\transformed\navigation-runtime-ktx-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\7a0b4d31fa3d8782e5559b2c39410947\transformed\jetified-navigation-compose-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\7a0b4d31fa3d8782e5559b2c39410947\transformed\jetified-navigation-compose-2.8.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\501ebaea409782e1d84435c32b2cfe1c\transformed\jetified-material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\501ebaea409782e1d84435c32b2cfe1c\transformed\jetified-material3-release\AndroidManifest.xml:20:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6b71969e8559997bd4bcd6d5d165fe79\transformed\jetified-coil-compose-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6b71969e8559997bd4bcd6d5d165fe79\transformed\jetified-coil-compose-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6804c049f97fc6fd2878b95f89fd5f76\transformed\jetified-coil-compose-base-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\6804c049f97fc6fd2878b95f89fd5f76\transformed\jetified-coil-compose-base-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\326cf68d14a971a93997744fc1cc6dad\transformed\jetified-accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\326cf68d14a971a93997744fc1cc6dad\transformed\jetified-accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.material:material-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b8bc713c61554d821aaaaf685cc352b4\transformed\jetified-material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b8bc713c61554d821aaaaf685cc352b4\transformed\jetified-material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\fd9f6384275e2dbfbda6c28ae952bbdb\transformed\jetified-animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\fd9f6384275e2dbfbda6c28ae952bbdb\transformed\jetified-animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f1039d02c19c51d39497f20d812b15e\transformed\jetified-material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f1039d02c19c51d39497f20d812b15e\transformed\jetified-material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4881e5fb71985f080d44fa9c4dce30e9\transformed\jetified-animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4881e5fb71985f080d44fa9c4dce30e9\transformed\jetified-animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b1c8adb6fc5362fa79bb29867c891a4b\transformed\jetified-foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b1c8adb6fc5362fa79bb29867c891a4b\transformed\jetified-foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2bb0235b5bbbeb3ad0626b5cfc0d7743\transformed\jetified-foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2bb0235b5bbbeb3ad0626b5cfc0d7743\transformed\jetified-foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\921fd8cd2353cf5cf5e0818e062ffdc7\transformed\jetified-ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\921fd8cd2353cf5cf5e0818e062ffdc7\transformed\jetified-ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\31eccc65f30bef3affd0b48434936521\transformed\jetified-ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\31eccc65f30bef3affd0b48434936521\transformed\jetified-ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d1814b389a03f06653d4526b1bd0786a\transformed\jetified-ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d1814b389a03f06653d4526b1bd0786a\transformed\jetified-ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\451de4750a443f9cdccd61ffc6cabf0a\transformed\jetified-ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\451de4750a443f9cdccd61ffc6cabf0a\transformed\jetified-ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f2654b28a0398ba33d5a328a77ce0da6\transformed\jetified-ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f2654b28a0398ba33d5a328a77ce0da6\transformed\jetified-ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f9e5135eb4053b7c9e4bbb4050d0d0c5\transformed\jetified-ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f9e5135eb4053b7c9e4bbb4050d0d0c5\transformed\jetified-ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\cac967daafbbcd288c9884e3992c4772\transformed\jetified-ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\cac967daafbbcd288c9884e3992c4772\transformed\jetified-ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bb46a65b11b0682b35e6af1ea1d07623\transformed\jetified-coil-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bb46a65b11b0682b35e6af1ea1d07623\transformed\jetified-coil-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\89ea2d388cd5930f504264928ed4a4fc\transformed\jetified-coil-base-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.6.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\89ea2d388cd5930f504264928ed4a4fc\transformed\jetified-coil-base-2.6.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\93b438e4438c28375c5734d247d5a8a1\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\93b438e4438c28375c5734d247d5a8a1\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4188d5e827d6892185129d32054b1b5d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4188d5e827d6892185129d32054b1b5d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dd2a8d52d23dbc37c42079c5d4f75007\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dd2a8d52d23dbc37c42079c5d4f75007\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\627f71686e6ef5001c489b09fda7333c\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\627f71686e6ef5001c489b09fda7333c\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5b1b9e43900df27308c34978d555f262\transformed\jetified-lifecycle-livedata-core-ktx-2.8.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5b1b9e43900df27308c34978d555f262\transformed\jetified-lifecycle-livedata-core-ktx-2.8.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b258612d897be571e09f06d8bc5d9faa\transformed\lifecycle-livedata-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b258612d897be571e09f06d8bc5d9faa\transformed\lifecycle-livedata-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8c8b664fb1e225278564e39b213c8045\transformed\jetified-lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8c8b664fb1e225278564e39b213c8045\transformed\jetified-lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8e07cd489c5f8ffd8002e5ea0419d718\transformed\lifecycle-livedata-core-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8e07cd489c5f8ffd8002e5ea0419d718\transformed\lifecycle-livedata-core-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b0fe8a24b8e7d11b6fa2b9c2276f35a2\transformed\jetified-lifecycle-viewmodel-savedstate-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b0fe8a24b8e7d11b6fa2b9c2276f35a2\transformed\jetified-lifecycle-viewmodel-savedstate-2.8.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06e7241e1e081587564c99a228984fa3\transformed\lifecycle-viewmodel-2.8.6\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06e7241e1e081587564c99a228984fa3\transformed\lifecycle-viewmodel-2.8.6\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\986cd721b0c6bcc92765f2959442bbe7\transformed\jetified-lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\986cd721b0c6bcc92765f2959442bbe7\transformed\jetified-lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\913bd8062ce71981d189643030e2b0ca\transformed\jetified-lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\913bd8062ce71981d189643030e2b0ca\transformed\jetified-lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f44a7ca6ef74650eff76faa060ffae7e\transformed\jetified-lifecycle-viewmodel-ktx-2.8.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f44a7ca6ef74650eff76faa060ffae7e\transformed\jetified-lifecycle-viewmodel-ktx-2.8.6\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d43b8b8a9396acb72e0170637da0c4e9\transformed\jetified-lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\d43b8b8a9396acb72e0170637da0c4e9\transformed\jetified-lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5f29a6f1221884f1ed2146900c69a71a\transformed\jetified-lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5f29a6f1221884f1ed2146900c69a71a\transformed\jetified-lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8a6aaca4ecc6d6d94774e32eaab6bb27\transformed\jetified-material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\8a6aaca4ecc6d6d94774e32eaab6bb27\transformed\jetified-material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\ed388df780ec35c91294d869acc95060\transformed\jetified-material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\ed388df780ec35c91294d869acc95060\transformed\jetified-material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\28a753664967682843f86485fb5b9813\transformed\jetified-ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\28a753664967682843f86485fb5b9813\transformed\jetified-ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2a30a8016b2d11b0a38ba5884618fb0d\transformed\jetified-activity-compose-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2a30a8016b2d11b0a38ba5884618fb0d\transformed\jetified-activity-compose-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\753eb8850f72a6007201e32150e13088\transformed\jetified-activity-ktx-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\753eb8850f72a6007201e32150e13088\transformed\jetified-activity-ktx-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\66f15a624c8491fdbd5fc81741f3c829\transformed\jetified-activity-1.9.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.3] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\66f15a624c8491fdbd5fc81741f3c829\transformed\jetified-activity-1.9.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\3cd5f86be4d330ea075090803c829f5c\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\3cd5f86be4d330ea075090803c829f5c\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\aa06c65f8ad6c08a3277e6b35f62a426\transformed\jetified-autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\aa06c65f8ad6c08a3277e6b35f62a426\transformed\jetified-autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.graphics:graphics-path:1.0.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\12ee5850016b480c1ba5d1fe6d27f9ca\transformed\jetified-graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\12ee5850016b480c1ba5d1fe6d27f9ca\transformed\jetified-graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\30f27787f0e99524e9d2fe982a263504\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\30f27787f0e99524e9d2fe982a263504\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\077b4e1644c68ccfe54323343ef7f7b2\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\077b4e1644c68ccfe54323343ef7f7b2\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\eee2b582beb287dd3633deca33e3a78b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\eee2b582beb287dd3633deca33e3a78b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e6e15afd4f8c07711e943caec4d6ef59\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e6e15afd4f8c07711e943caec4d6ef59\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2b5706b816bd1908173e3a319c29e77a\transformed\jetified-customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2b5706b816bd1908173e3a319c29e77a\transformed\jetified-customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2038633fe975e11cf9af54ef1b8b8c53\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2038633fe975e11cf9af54ef1b8b8c53\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\67e6c3308ae7f0ab582bbd7b6afe2c77\transformed\jetified-datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\67e6c3308ae7f0ab582bbd7b6afe2c77\transformed\jetified-datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\754f582abd10c4a0c10a7ea36168880f\transformed\jetified-datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\754f582abd10c4a0c10a7ea36168880f\transformed\jetified-datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c9474168259655bdeb97acd6ddc51b6d\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c9474168259655bdeb97acd6ddc51b6d\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\20d81382d6ddf2b50d6efa17d1e894ff\transformed\jetified-runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\20d81382d6ddf2b50d6efa17d1e894ff\transformed\jetified-runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e1444accebe523d6a386c280c0caefc7\transformed\jetified-runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\e1444accebe523d6a386c280c0caefc7\transformed\jetified-runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\75356c8ce93268ce88037c5da74d1b99\transformed\jetified-annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\75356c8ce93268ce88037c5da74d1b99\transformed\jetified-annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dc3e3e02605b039c471d51dceb673e59\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\dc3e3e02605b039c471d51dceb673e59\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.startapp:json:1.0.2] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5fa28dd1b3e1593a5073c24e04d93968\transformed\jetified-json-1.0.2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.startapp:json:1.0.2] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\5fa28dd1b3e1593a5073c24e04d93968\transformed\jetified-json-1.0.2\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\18b005af1a9e42ef8af16eae67a50593\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\18b005af1a9e42ef8af16eae67a50593\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b12cdcba68f32cfa25140c365bcf2e98\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\b12cdcba68f32cfa25140c365bcf2e98\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c39e3bf925f4508202ce9cb21952d146\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\c39e3bf925f4508202ce9cb21952d146\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a3acc7b56d56a2a8d47426cfc07f49a1\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a3acc7b56d56a2a8d47426cfc07f49a1\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\Bear Rush Mod\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:5-76
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:22-73
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:22-78
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:5-110
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:22-107
+uses-permission#android.permission.ACCESS_ADSERVICES_TOPICS
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:5-83
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:22-80
+queries
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:15:5-19:15
+intent#action:name:android.intent.action.MAIN
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:16:9-18:18
+provider#com.startapp.sdk.adsbase.StartAppInitProvider
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:22:9-25:40
+	android:authorities
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:24:13-72
+	android:exported
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:23:13-73
+activity#com.startapp.sdk.adsbase.consent.ConsentActivity
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:27:9-30:64
+	android:configChanges
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:29:13-87
+	android:theme
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:30:13-61
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:28:13-76
+activity#com.startapp.sdk.ads.list3d.List3DActivity
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:31:9-33:52
+	android:theme
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:33:13-49
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:32:13-70
+activity#com.startapp.sdk.ads.interstitials.OverlayActivity
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:34:9-37:64
+	android:configChanges
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:36:13-87
+	android:theme
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:37:13-61
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:35:13-78
+service#com.startapp.sdk.cachedservice.BackgroundService
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:9-84
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:18-81
+service#com.startapp.sdk.jobs.SchedulerService
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:40:9-42:72
+	android:permission
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:42:13-69
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:41:13-66
+receiver#com.startapp.sdk.adsbase.remoteconfig.BootCompleteListener
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:44:9-50:20
+	android:exported
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:46:13-36
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:45:13-86
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:47:13-49:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:17-79
+	android:name
+		ADDED from [com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:25-76
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\a87271b94d3112e7fd65663c1f9a8b42\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:30:17-78
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:24:13-63
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:24:13-71
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+permission#com.bearrushmod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+uses-permission#com.bearrushmod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
