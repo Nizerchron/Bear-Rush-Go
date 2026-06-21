@@ -1,0 +1,6 @@
+{
+  "versionCode": 2,
+  "versionName": "1.1.0",
+  "apkUrl": "https://github.com/Nizerchron/Bear-Rush-Go/releases/download/v1.1.0/BearRushMod.apk",
+  "changelog": "- Fitur auto-update\n- Perbaikan download preset\n- Fix crash di Android 14"
+}

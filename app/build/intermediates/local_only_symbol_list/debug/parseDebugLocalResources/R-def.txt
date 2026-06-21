@@ -18,3 +18,4 @@ string search_hint
 style Theme.BearRushMod
 xml backup_rules
 xml data_extraction_rules
+xml file_paths

@@ -68,6 +68,10 @@
         "source": "com.bearrushmod.app-main-6:/drawable-xxxhdpi/bg_welcome_header.png"
     },
     {
+        "merged": "com.bearrushmod.app-debug-4:/xml_file_paths.xml.flat",
+        "source": "com.bearrushmod.app-main-6:/xml/file_paths.xml"
+    },
+    {
         "merged": "com.bearrushmod.app-debug-4:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
         "source": "com.bearrushmod.app-main-6:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
     },

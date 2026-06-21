@@ -484,3 +484,4 @@ int[] styleable StateListDrawableItem { 0x01010199 }
 int styleable StateListDrawableItem_android_drawable 0
 int xml backup_rules 0x7f0c0000
 int xml data_extraction_rules 0x7f0c0001
+int xml file_paths 0x7f0c0002

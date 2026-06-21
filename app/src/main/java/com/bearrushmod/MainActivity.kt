@@ -27,6 +27,7 @@ import com.bearrushmod.data.AdsManager
 import com.bearrushmod.data.DataStoreManager
 import com.bearrushmod.data.DownloadManager
 import com.bearrushmod.data.PresetRepository
+import com.bearrushmod.data.UpdateManager
 import com.bearrushmod.model.Category
 import com.bearrushmod.model.Preset
 import com.bearrushmod.ui.screens.MainScreen
@@ -70,6 +71,11 @@ class MainActivity : ComponentActivity() {
                     startActivity(this)
                 }
             }
+        }
+
+        // ── Cek update dari GitHub ──
+        lifecycleScope.launch {
+            UpdateManager.checkAndShowUpdate(this@MainActivity, BuildConfig.VERSION_CODE)
         }
 
         setContent {
