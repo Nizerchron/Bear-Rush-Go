@@ -9,4 +9,14 @@
     <string name="dark_mode">Mode Gelap</string>
     <string name="light_mode">Mode Terang</string>
     <string name="download_sba">Download SBA Geokar</string>
+    
+    <string name="category_all">Semua</string>
+    <string name="category_nature">Alam</string>
+    <string name="category_structure">Bangunan</string>
+    <string name="category_label">Kategori: %1$s</string>
+    <string name="close">Tutup</string>
+    <string name="no_description">Tidak ada deskripsi.</string>
+    <string name="discussion">Diskusi (%1$d)</string>
+    <string name="no_comments">Belum ada komentar. Jadilah yang pertama berkomentar!</string>
+    <string name="write_comment">Tulis komentar...</string>
 </resources>

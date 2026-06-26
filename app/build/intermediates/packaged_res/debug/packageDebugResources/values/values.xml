@@ -2,13 +2,22 @@
 <resources>
     <string name="app_name">Bear Rush Mod</string>
     <string name="categories">Categories</string>
+    <string name="category_all">All</string>
+    <string name="category_label">Category: %1$s</string>
+    <string name="category_nature">Nature</string>
+    <string name="category_structure">Structure</string>
+    <string name="close">Close</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="discussion">Discussion (%1$d)</string>
     <string name="download">Download</string>
     <string name="download_sba">Download SBA Geokar</string>
     <string name="free">Free</string>
     <string name="light_mode">Light Mode</string>
+    <string name="no_comments">No comments yet. Be the first to comment!</string>
+    <string name="no_description">No description available.</string>
     <string name="popular_presets">Popular Presets</string>
     <string name="search_hint">Search presets...</string>
+    <string name="write_comment">Write a comment...</string>
     <style name="Theme.BearRushMod" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>

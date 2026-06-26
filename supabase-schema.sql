@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS preset_comments (
   user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   username TEXT NOT NULL DEFAULT 'Guest',
   comment TEXT NOT NULL,
+  parent_comment_id BIGINT REFERENCES preset_comments(id) ON DELETE CASCADE,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 

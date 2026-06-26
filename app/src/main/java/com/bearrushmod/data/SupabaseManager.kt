@@ -38,6 +38,7 @@ data class AuthUser(
 @Serializable
 data class AuthResponse(
     @SerialName("access_token") val accessToken: String? = null,
+    @SerialName("refresh_token") val refreshToken: String? = null,
     val user: AuthUser? = null
 )
 
@@ -74,11 +75,18 @@ data class UserPresetLog(
 data class PresetComment(
     val id: Long? = null,
     @SerialName("preset_id") val presetId: Long,
+    @SerialName("user_id") val userId: String? = null,
     val username: String = "Guest",
     val comment: String,
     @SerialName("parent_comment_id") val parentCommentId: Long? = null,
     @SerialName("created_at") val createdAt: String? = null
 )
+
+@Serializable
+data class CommentPresetId(
+    @SerialName("preset_id") val presetId: Long
+)
+
 
 class SupabaseManager(
     private val supabaseUrl: String = BuildConfig.SUPABASE_URL,
@@ -125,6 +133,18 @@ class SupabaseManager(
         }
         if (!response.status.isSuccess()) {
             throw Exception("Google Sign In gagal: ${response.bodyAsText()}")
+        }
+        response.body()
+    }
+
+    suspend fun refreshToken(refreshToken: String): AuthResponse = withContext(Dispatchers.IO) {
+        val response = client.post("$supabaseUrl/auth/v1/token?grant_type=refresh_token") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            setBody(mapOf("refresh_token" to refreshToken))
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Refresh token gagal: ${response.bodyAsText()}")
         }
         response.body()
     }
@@ -234,6 +254,21 @@ class SupabaseManager(
         response.body()
     }
 
+    suspend fun getAllCommentsCountMap(): Map<Long, Int> = withContext(Dispatchers.IO) {
+        try {
+            val response = client.get("$supabaseUrl/rest/v1/preset_comments?select=preset_id") {
+                header("apikey", supabaseKey)
+            }
+            if (response.status.isSuccess()) {
+                val list: List<CommentPresetId> = response.body()
+                return@withContext list.groupBy { it.presetId }
+                    .mapValues { it.value.size }
+            }
+        } catch (_: Exception) {}
+        emptyMap()
+    }
+
+
     suspend fun postComment(comment: PresetComment, token: String? = null): PresetComment = withContext(Dispatchers.IO) {
         val response = client.post("$supabaseUrl/rest/v1/preset_comments") {
             contentType(ContentType.Application.Json)
@@ -249,5 +284,38 @@ class SupabaseManager(
         }
         val list: List<PresetComment> = response.body()
         list.first()
+    }
+
+    suspend fun incrementViews(presetId: Long, currentViews: Long) = withContext(Dispatchers.IO) {
+        val response = client.patch("$supabaseUrl/rest/v1/presets?id=eq.$presetId") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            setBody(mapOf("views" to currentViews + 1))
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal mengupdate views: ${response.bodyAsText()}")
+        }
+    }
+
+    suspend fun incrementLoves(presetId: Long, currentLoves: Long) = withContext(Dispatchers.IO) {
+        val response = client.patch("$supabaseUrl/rest/v1/presets?id=eq.$presetId") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            setBody(mapOf("loves" to currentLoves + 1))
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal mengupdate loves: ${response.bodyAsText()}")
+        }
+    }
+
+    suspend fun incrementDownloads(presetId: Long, currentDownloads: Long) = withContext(Dispatchers.IO) {
+        val response = client.patch("$supabaseUrl/rest/v1/presets?id=eq.$presetId") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            setBody(mapOf("downloads" to currentDownloads + 1))
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal mengupdate downloads: ${response.bodyAsText()}")
+        }
     }
 }

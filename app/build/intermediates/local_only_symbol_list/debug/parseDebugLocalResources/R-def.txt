@@ -1,5 +1,10 @@
 R_DEF: Internal format may change without notice
 local
+drawable bear_default
+drawable bear_oppo
+drawable bear_realme
+drawable bear_samsung
+drawable bear_xiaomi
 drawable bg_welcome_header
 drawable geokar
 mipmap ic_launcher
@@ -8,13 +13,22 @@ mipmap ic_launcher_foreground
 mipmap ic_launcher_monochrome
 string app_name
 string categories
+string category_all
+string category_label
+string category_nature
+string category_structure
+string close
 string dark_mode
+string discussion
 string download
 string download_sba
 string free
 string light_mode
+string no_comments
+string no_description
 string popular_presets
 string search_hint
+string write_comment
 style Theme.BearRushMod
 xml backup_rules
 xml data_extraction_rules

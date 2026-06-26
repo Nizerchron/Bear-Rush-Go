@@ -105,10 +105,6 @@ class MainActivity : ComponentActivity() {
                 LaunchedEffect(Unit) {
                     try {
                         presets = repository.getPresets()
-                        if (presets.isNotEmpty()) {
-                            val categoryNames = presets.map { it.category }.distinct()
-                            selectedCategory = Category(id = 0, name = categoryNames.first())
-                        }
                     } catch (e: Exception) {
                         error = e.message
                     } finally {
@@ -193,10 +189,6 @@ class MainActivity : ComponentActivity() {
                                     lifecycleScope.launch {
                                         try {
                                             presets = repository.getPresets()
-                                            if (presets.isNotEmpty()) {
-                                                val categoryNames = presets.map { it.category }.distinct()
-                                                selectedCategory = Category(id = 0, name = categoryNames.first())
-                                            }
                                         } catch (e: Exception) {
                                             error = e.message
                                         } finally {

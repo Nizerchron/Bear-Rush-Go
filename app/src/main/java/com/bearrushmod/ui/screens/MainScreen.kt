@@ -56,6 +56,21 @@ import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 
 enum class ScreenTab {
     CATALOG,
@@ -96,6 +111,24 @@ fun MainScreen(
     var detailPreset by remember { mutableStateOf<Preset?>(null) }
     var confirmDownloadPreset by remember { mutableStateOf<Preset?>(null) }
 
+    var detailViews by remember { mutableStateOf(0L) }
+    var detailLoves by remember { mutableStateOf(0L) }
+    var detailDownloads by remember { mutableStateOf(0L) }
+
+    LaunchedEffect(detailPreset) {
+        detailPreset?.let {
+            detailViews = it.views
+            detailLoves = it.loves
+            detailDownloads = it.downloads
+        }
+    }
+
+    var commentsCountMap by remember { mutableStateOf<Map<Long, Int>>(emptyMap()) }
+
+    LaunchedEffect(presets) {
+        commentsCountMap = supabaseManager.getAllCommentsCountMap()
+    }
+
     // Sync profile and downloaded presets when user session changes
     LaunchedEffect(session) {
         val currentSession = session
@@ -120,13 +153,14 @@ fun MainScreen(
 
     val refreshProfileData: () -> Unit = {
         scope.launch {
-            val currentSession = session
-            if (currentSession != null) {
+            if (session != null) {
                 try {
-                    val freshProfile = supabaseManager.getProfile(currentSession.userId, currentSession.accessToken, currentSession.email, currentSession.username)
-                    profile = freshProfile
-                    dataStoreManager.updateCoins(freshProfile.coins)
-                    ownedPresets = supabaseManager.getOwnedPresets(currentSession.userId, currentSession.accessToken)
+                    runWithTokenRefresh(session, supabaseManager, dataStoreManager) { token ->
+                        val freshProfile = supabaseManager.getProfile(session!!.userId, token, session!!.email, session!!.username)
+                        profile = freshProfile
+                        dataStoreManager.updateCoins(freshProfile.coins)
+                        ownedPresets = supabaseManager.getOwnedPresets(session!!.userId, token)
+                    }
                 } catch (e: Exception) {
                     Toast.makeText(context, "Sinkronisasi gagal: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 }
@@ -140,6 +174,34 @@ fun MainScreen(
             .filter { it.name.contains(searchQuery, ignoreCase = true) }
     }
 
+    if (detailPreset != null) {
+        PresetDetailScreen(
+            preset = detailPreset!!,
+            session = session,
+            profile = profile,
+            supabaseManager = supabaseManager,
+            dataStoreManager = dataStoreManager,
+            downloadStates = downloadStates,
+            downloadManager = downloadManager,
+            ownedPresets = ownedPresets,
+            commentsCountMap = commentsCountMap,
+            onBack = { detailPreset = null },
+            onRefreshProfile = refreshProfileData,
+            onLoveIncrement = { },
+            onCommentAdded = {
+                scope.launch {
+                    commentsCountMap = supabaseManager.getAllCommentsCountMap()
+                }
+            },
+            detailViews = detailViews,
+            detailLoves = detailLoves,
+            detailDownloads = detailDownloads,
+            onViewsUpdate = { detailViews = it },
+            onLovesUpdate = { detailLoves = it },
+            onDownloadsUpdate = { detailDownloads = it },
+            confirmDownloadPreset = { confirmDownloadPreset = it }
+        )
+    } else {
     Scaffold(
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         bottomBar = {
@@ -209,6 +271,7 @@ fun MainScreen(
                         onRefresh = onRefresh,
                         downloadStates = downloadStates,
                         downloadManager = downloadManager,
+                        commentsCountMap = commentsCountMap,
                         onCardClick = { preset -> detailPreset = preset },
                         onDownloadClick = { preset ->
                             if (downloadManager != null && downloadStates[preset.id] == null) {
@@ -263,6 +326,7 @@ fun MainScreen(
             }
         }
     }
+    }
 
     // ── Confirm download dialog ──
     confirmDownloadPreset?.let { preset ->
@@ -292,6 +356,12 @@ fun MainScreen(
                                                     downloadStates[p.id] = 2f
                                                     scope.launch {
                                                         try {
+                                                            // Increment downloads count in Supabase DB
+                                                            supabaseManager.incrementDownloads(p.id, p.downloads)
+                                                            if (detailPreset?.id == p.id) {
+                                                                detailDownloads += 1
+                                                            }
+
                                                             // Log download ke database Supabase
                                                             val currentSession = session
                                                             if (currentSession != null) {
@@ -373,206 +443,7 @@ fun MainScreen(
         )
     }
 
-    // ── Preset Detail & Comments Dialog ──
-    detailPreset?.let { preset ->
-        var comments by remember { mutableStateOf<List<PresetComment>>(emptyList()) }
-        var isFetchingComments by remember { mutableStateOf(false) }
-        var commentInput by remember { mutableStateOf("") }
-        var isPostingComment by remember { mutableStateOf(false) }
-
-        val fetchComments = {
-            scope.launch {
-                isFetchingComments = true
-                comments = supabaseManager.getComments(preset.id)
-                isFetchingComments = false
-            }
-        }
-
-        LaunchedEffect(preset) {
-            fetchComments()
-        }
-
-        AlertDialog(
-            onDismissRequest = { detailPreset = null },
-            confirmButton = {
-                TextButton(onClick = { detailPreset = null }) { Text("Tutup") }
-            },
-            title = { Text(preset.name, fontWeight = FontWeight.Bold) },
-            text = {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.85f)
-                ) {
-                    LazyColumn(
-                        modifier = Modifier.weight(1f),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        item {
-                            AsyncImage(
-                                model = preset.preview_url,
-                                contentDescription = null,
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .aspectRatio(16f / 9f)
-                                    .clip(RoundedCornerShape(12.dp))
-                            )
-                            Spacer(modifier = Modifier.height(12.dp))
-                            Text(
-                                text = preset.description.ifEmpty { "Tidak ada deskripsi." },
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = "Kategori: ${preset.category}",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            HorizontalDivider()
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = "Diskusi (${comments.size})",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                IconButton(onClick = { fetchComments() }) {
-                                    Icon(
-                                        imageVector = Icons.Default.Refresh,
-                                        contentDescription = "Refresh Komentar",
-                                        tint = Color(0xFFFF9800)
-                                    )
-                                }
-                            }
-                            Spacer(modifier = Modifier.height(8.dp))
-                        }
-
-                        if (isFetchingComments) {
-                            item {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(16.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    CircularProgressIndicator(
-                                        color = Color(0xFFFF9800),
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                }
-                            }
-                        } else if (comments.isEmpty()) {
-                            item {
-                                Text(
-                                    text = "Belum ada komentar. Jadilah yang pertama berkomentar!",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.padding(vertical = 12.dp),
-                                    textAlign = TextAlign.Center
-                                )
-                            }
-                        } else {
-                            items(comments) { c ->
-                                Card(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    colors = CardDefaults.cardColors(
-                                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-                                    ),
-                                    shape = RoundedCornerShape(8.dp)
-                                ) {
-                                    Column(modifier = Modifier.padding(10.dp)) {
-                                        Row(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                            Text(
-                                                text = c.username,
-                                                style = MaterialTheme.typography.labelMedium,
-                                                fontWeight = FontWeight.Bold,
-                                                color = Color(0xFFFF9800)
-                                            )
-                                            val cleanDate = c.createdAt?.split("T")?.firstOrNull() ?: ""
-                                            Text(
-                                                text = cleanDate,
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                                            )
-                                        }
-                                        Spacer(modifier = Modifier.height(4.dp))
-                                        Text(
-                                            text = c.comment,
-                                            style = MaterialTheme.typography.bodyMedium
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        OutlinedTextField(
-                            value = commentInput,
-                            onValueChange = { commentInput = it },
-                            placeholder = { Text("Tulis komentar...", fontSize = 13.sp) },
-                            modifier = Modifier.weight(1f),
-                            maxLines = 2,
-                            singleLine = false,
-                            shape = RoundedCornerShape(20.dp),
-                            colors = OutlinedTextFieldDefaults.colors(
-                                focusedBorderColor = Color(0xFFFF9800),
-                                unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
-                            )
-                        )
-                        Spacer(modifier = Modifier.width(6.dp))
-                        IconButton(
-                            onClick = {
-                                if (commentInput.trim().isNotEmpty()) {
-                                    scope.launch {
-                                        isPostingComment = true
-                                        try {
-                                            val currentSession = session
-                                            val newComment = PresetComment(
-                                                presetId = preset.id,
-                                                username = currentSession?.username ?: "Guest",
-                                                comment = commentInput.trim()
-                                            )
-                                            supabaseManager.postComment(
-                                                comment = newComment,
-                                                token = currentSession?.accessToken
-                                            )
-                                            commentInput = ""
-                                            fetchComments()
-                                        } catch (e: Exception) {
-                                            Toast.makeText(context, "Komentar gagal terkirim: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-                                        } finally {
-                                            isPostingComment = false
-                                        }
-                                    }
-                                }
-                            },
-                            enabled = !isPostingComment && commentInput.trim().isNotEmpty()
-                        ) {
-                            if (isPostingComment) {
-                                CircularProgressIndicator(color = Color(0xFFFF9800), modifier = Modifier.size(20.dp))
-                            } else {
-                                Icon(Icons.Default.Send, contentDescription = "Kirim", tint = Color(0xFFFF9800))
-                            }
-                        }
-                    }
-                }
-            }
-        )
-    }
+    // Old Dialog replaced with full page PresetDetailScreen below
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -588,6 +459,7 @@ fun CatalogTab(
     onRefresh: () -> Unit,
     downloadStates: MutableMap<Long, Float>,
     downloadManager: DownloadManager?,
+    commentsCountMap: Map<Long, Int> = emptyMap(),
     onCardClick: (Preset) -> Unit,
     onDownloadClick: (Preset) -> Unit
 ) {
@@ -624,6 +496,7 @@ fun CatalogTab(
                         presets = rowItems,
                         downloadStates = downloadStates,
                         downloadManager = downloadManager,
+                        commentsCountMap = commentsCountMap,
                         onCardClick = onCardClick,
                         onDownloadClick = onDownloadClick
                     )
@@ -857,6 +730,224 @@ fun ShopTab(
     }
 }
 
+fun getBrandAvatarDrawableRes(): Int {
+    val manufacturer = android.os.Build.MANUFACTURER.lowercase(java.util.Locale.ROOT)
+    return when {
+        manufacturer.contains("xiaomi") || manufacturer.contains("redmi") || manufacturer.contains("poco") -> R.drawable.bear_xiaomi
+        manufacturer.contains("samsung") -> R.drawable.bear_samsung
+        manufacturer.contains("oppo") -> R.drawable.bear_oppo
+        manufacturer.contains("realme") -> R.drawable.bear_realme
+        else -> R.drawable.bear_default
+    }
+}
+
+data class FloatingHeart(
+    val id: Long,
+    val startX: Float,
+    val startY: Float,
+    val speedX: Float,
+    val amplitude: Float,
+    val frequency: Float,
+    val rotation: Float,
+    val rotationSpeed: Float,
+    val color: Color,
+    val size: Float
+)
+
+@Composable
+fun FloatingHearts(
+    hearts: List<FloatingHeart>,
+    onRemoveHeart: (Long) -> Unit
+) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        hearts.forEach { heart ->
+            key(heart.id) {
+                FloatingHeartItem(
+                    heart = heart,
+                    onFinished = { onRemoveHeart(heart.id) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun BoxScope.FloatingHeartItem(heart: FloatingHeart, onFinished: () -> Unit) {
+    var animStarted by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        animStarted = true
+    }
+    
+    val progress by animateFloatAsState(
+        targetValue = if (animStarted) 1f else 0f,
+        animationSpec = tween(
+            durationMillis = 1500,
+            easing = LinearOutSlowInEasing
+        ),
+        finishedListener = { onFinished() },
+        label = "heartProgress"
+    )
+
+    // Calculate position
+    val yOffset = heart.startY - (progress * 380f)
+    val sway = kotlin.math.sin(progress * Math.PI.toFloat() * heart.frequency) * heart.amplitude
+    val xOffset = heart.startX + (progress * heart.speedX * 45f) + sway
+    
+    // Scale starts small, expands, and fades out
+    val scale = if (progress < 0.15f) {
+        (progress / 0.15f) * heart.size
+    } else {
+        ((1f - progress) / 0.85f) * heart.size
+    }
+    
+    val alpha = if (progress < 0.15f) {
+        progress / 0.15f
+    } else {
+        ((1f - progress) / 0.85f).coerceIn(0f, 1f)
+    }
+    
+    val rotation = heart.rotation + (progress * heart.rotationSpeed)
+
+    Icon(
+        imageVector = Icons.Default.Favorite,
+        contentDescription = null,
+        tint = heart.color,
+        modifier = Modifier
+            .align(Alignment.TopStart)
+            .offset(x = xOffset.dp, y = yOffset.dp)
+            .graphicsLayer(
+                scaleX = scale,
+                scaleY = scale,
+                alpha = alpha,
+                rotationZ = rotation
+            )
+            .size(24.dp)
+    )
+}
+
+fun spawnHeartsBurst(
+    floatingHearts: MutableList<FloatingHeart>,
+    startX: Float,
+    startY: Float
+) {
+    val heartColors = listOf(
+        Color(0xFFE91E63), // Pink
+        Color(0xFFFF2E93), // Neon Pink
+        Color(0xFFFF4646), // Neon Red
+        Color(0xFFB02EFF), // Electric Purple
+        Color(0xFFFF85A1), // Light Rose
+        Color(0xFFFF0A54), // Hot Pink
+        Color(0xFFFF5E36), // Coral Orange
+        Color(0xFFFFC107), // Gold/Yellow
+        Color(0xFF00E676), // Neon Green
+        Color(0xFF00B0FF)  // Neon Blue
+    )
+    
+    val currentMs = System.currentTimeMillis()
+    repeat(12) { index ->
+        val id = currentMs + index
+        val angleDeg = kotlin.random.Random.nextInt(210, 331)
+        val angleRad = angleDeg * (Math.PI / 180f)
+        val speed = 2f + kotlin.random.Random.nextFloat() * 3f
+        val speedX = kotlin.math.cos(angleRad).toFloat() * speed
+        val amplitude = 15f + kotlin.random.Random.nextFloat() * 30f
+        val frequency = 1.5f + kotlin.random.Random.nextFloat() * 1.5f
+        val size = 0.7f + kotlin.random.Random.nextFloat() * 0.9f
+        val rotation = kotlin.random.Random.nextFloat() * 360f
+        val rotationSpeed = -180f + kotlin.random.Random.nextFloat() * 360f
+        val color = heartColors[kotlin.random.Random.nextInt(heartColors.size)]
+        
+        floatingHearts.add(
+            FloatingHeart(
+                id = id,
+                startX = startX,
+                startY = startY,
+                speedX = speedX,
+                amplitude = amplitude,
+                frequency = frequency,
+                rotation = rotation,
+                rotationSpeed = rotationSpeed,
+                color = color,
+                size = size
+            )
+        )
+    }
+}
+
+fun containsBadWords(text: String): Boolean {
+    // 1. Convert to lowercase
+    var normalized = text.lowercase(java.util.Locale.ROOT)
+    
+    // 2. Leetspeak replacements
+    normalized = normalized
+        .replace("4", "a")
+        .replace("1", "i")
+        .replace("!", "i")
+        .replace("0", "o")
+        .replace("3", "e")
+        .replace("v", "u")
+        .replace("8", "b")
+        .replace("9", "g")
+        .replace("2", "z")
+        .replace("$", "s")
+        .replace("@", "a")
+
+    // 3. Remove repeated characters (e.g., "annjiiing" -> "anjing")
+    val sb = java.lang.StringBuilder()
+    if (normalized.isNotEmpty()) {
+        sb.append(normalized[0])
+        for (i in 1 until normalized.length) {
+            if (normalized[i] != normalized[i - 1]) {
+                sb.append(normalized[i])
+            }
+        }
+    }
+    val deDuplicated = sb.toString()
+
+    // 4. Comprehensive lists of bad words (length >= 4)
+    val badWords = setOf(
+        // Indonesian (Bahasa Indonesia kasar)
+        "anjing", "anying", "anyink", "anjrit", "anjrot", "anjir", "babi", "bangsat", "bajingan", 
+        "kunyuk", "keparat", "taik", "kontol", "memek", "jembut", "ngentot", "ngentod", "peler", "perek", 
+        "lonte", "jablay", "goblog", "goblok", "tolol", "bego", "idiot", "geblek", "asu", "celeng", "bacot", 
+        "congor", "pecun", "silit", "tetek", "toket", "itil", "ngewe", "ewe", "sinting", "binal", 
+        "brengsek", "setan", "iblis", "dajal", "dajjal", "pantek", "puki", "pukimak", "kampang", "cabo", 
+        "kimak", "entot", "gentot", "kentot", "ngentit", "ngetot", "tempik",
+        
+        // Sundanese (Bahasa Sunda kasar)
+        "bagong", "kehed", "heunceut", "beungeut", "jurig", "modar", "gundik", "beulok", "borok",
+        "lentah", "jalingkak", "piceun", "cicing",
+        
+        // Javanese (Bahasa Jawa kasar)
+        "jancok", "jancuk", "dancok", "juancok", "pekok", "ndasmu", "matamu", "cangkemu", "tempek", "kirik", 
+        "gateli", "bajigur", "raimu", "kisoh", "umbel", "mbokne", "ancuk", "bento", "edan", "gemblung", "sarap",
+        
+        // English
+        "fuck", "shit", "asshole", "bitch", "bastard", "cunt", "dick", "pussy", "motherfucker", "whore", 
+        "slut", "wanker", "retard", "crap", "piss", "cocksucker", "faggot", "dyke", "bollocks"
+    )
+
+    // Check if substring matches in either version
+    for (word in badWords) {
+        if (normalized.contains(word) || deDuplicated.contains(word)) {
+            return true
+        }
+    }
+    
+    // 5. Short bad words checked as whole words to avoid false positives (e.g. "suka" containing "su")
+    val wordsList = normalized.split(Regex("[\\s\\p{Punct}]+"))
+    val deduplicatedWordsList = deDuplicated.split(Regex("[\\s\\p{Punct}]+"))
+    
+    val shortBadWords = setOf("tai", "su", "sia", "asu", "fuk", "wtg", "crap", "piss", "fag")
+    for (word in shortBadWords) {
+        if (wordsList.contains(word) || deduplicatedWordsList.contains(word)) {
+            return true
+        }
+    }
+
+    return false
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileTab(
@@ -914,6 +1005,7 @@ fun ProfileTab(
                                 email = userEmail,
                                 username = realProfile.username,
                                 accessToken = token,
+                                refreshToken = authResp.refreshToken ?: "",
                                 coins = realProfile.coins
                             )
                             dataStoreManager.saveUserSession(sessionObj)
@@ -1098,6 +1190,7 @@ fun ProfileTab(
                                                 email = emailInput,
                                                 username = finalUsername,
                                                 accessToken = token,
+                                                refreshToken = signupResp.refreshToken ?: "",
                                                 coins = 100
                                             )
                                             dataStoreManager.saveUserSession(sessionObj)
@@ -1115,6 +1208,7 @@ fun ProfileTab(
                                             email = emailInput,
                                             username = realProfile.username,
                                             accessToken = token,
+                                            refreshToken = loginResp.refreshToken ?: "",
                                             coins = realProfile.coins
                                         )
                                         dataStoreManager.saveUserSession(sessionObj)
@@ -1266,7 +1360,7 @@ fun ProfileTab(
                                 modifier = Modifier
                                     .size(60.dp)
                                     .clip(CircleShape)
-                                    .background(Color(0xFFFF9800)),
+                                    .background(MaterialTheme.colorScheme.surfaceVariant),
                                 contentAlignment = Alignment.Center
                             ) {
                                 val avatarUrl = profile?.avatarUrl ?: ""
@@ -1278,11 +1372,11 @@ fun ProfileTab(
                                         contentScale = ContentScale.Crop
                                     )
                                 } else {
-                                    Text(
-                                        text = (profile?.username ?: session.username).firstOrNull()?.uppercase() ?: "?",
-                                        color = Color.White,
-                                        fontSize = 24.sp,
-                                        fontWeight = FontWeight.Bold
+                                    Image(
+                                        painter = painterResource(id = getBrandAvatarDrawableRes()),
+                                        contentDescription = "Default Bear Avatar",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Crop
                                     )
                                 }
                             }
@@ -1393,7 +1487,7 @@ fun ProfileTab(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 AsyncImage(
-                                    model = p.presetPreviewUrl,
+                                    model = p.presetPreviewUrl.split(",").firstOrNull()?.trim() ?: "",
                                     contentDescription = null,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
@@ -1408,8 +1502,13 @@ fun ProfileTab(
                                         style = MaterialTheme.typography.titleSmall,
                                         fontWeight = FontWeight.SemiBold
                                     )
+                                    val catDisplay = when (p.presetCategory.lowercase()) {
+                                        "nature" -> stringResource(R.string.category_nature)
+                                        "structure", "structur", "bangunan" -> stringResource(R.string.category_structure)
+                                        else -> p.presetCategory
+                                    }
                                     Text(
-                                        text = p.presetCategory,
+                                        text = catDisplay,
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
@@ -1475,6 +1574,7 @@ fun ProfileTab(
                                         email = session.email,
                                         username = updated.username,
                                         accessToken = session.accessToken,
+                                        refreshToken = session.refreshToken,
                                         coins = updated.coins
                                     )
                                 )
@@ -1628,8 +1728,15 @@ fun CategoriesSection(categories: List<Category>, selectedCategory: Category?, o
         Text(stringResource(R.string.categories), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            item { CategoryChip(name = "All", isSelected = selectedCategory == null, onClick = { onCategorySelected(null) }) }
-            items(categories) { category -> CategoryChip(name = category.name, isSelected = selectedCategory?.name == category.name, onClick = { onCategorySelected(category) }) }
+            item { CategoryChip(name = stringResource(R.string.category_all), isSelected = selectedCategory == null, onClick = { onCategorySelected(null) }) }
+            items(categories) { category -> 
+                val displayName = when (category.name.lowercase()) {
+                    "nature" -> stringResource(R.string.category_nature)
+                    "structure", "structur", "bangunan" -> stringResource(R.string.category_structure)
+                    else -> category.name
+                }
+                CategoryChip(name = displayName, isSelected = selectedCategory?.name == category.name, onClick = { onCategorySelected(category) }) 
+            }
         }
     }
 }
@@ -1647,6 +1754,7 @@ fun PresetsRow(
     presets: List<Preset>,
     downloadStates: MutableMap<Long, Float>,
     downloadManager: DownloadManager?,
+    commentsCountMap: Map<Long, Int> = emptyMap(),
     onCardClick: (Preset) -> Unit = {},
     onDownloadClick: (Preset) -> Unit
 ) {
@@ -1656,6 +1764,7 @@ fun PresetsRow(
                 preset = preset, modifier = Modifier.weight(1f),
                 isDownloaded = downloadManager?.isDownloaded("${preset.name}.bin") == true,
                 downloadProgress = downloadStates[preset.id],
+                commentsCount = commentsCountMap[preset.id] ?: 0,
                 onCardClick = { onCardClick(preset) },
                 onDownloadClick = { onDownloadClick(preset) }
             )
@@ -1679,5 +1788,821 @@ fun GoogleIcon(modifier: Modifier = Modifier) {
             fontSize = 13.sp,
             color = Color(0xFF4285F4)
         )
+    }
+}
+
+fun getBrandAvatarForUsername(username: String): Int {
+    val lower = username.lowercase(java.util.Locale.ROOT)
+    return when {
+        lower.contains("xiaomi") || lower.contains("redmi") || lower.contains("poco") -> R.drawable.bear_xiaomi
+        lower.contains("samsung") -> R.drawable.bear_samsung
+        lower.contains("oppo") -> R.drawable.bear_oppo
+        lower.contains("realme") -> R.drawable.bear_realme
+        else -> R.drawable.bear_default
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PresetDetailScreen(
+    preset: Preset,
+    session: UserSession?,
+    profile: UserProfile?,
+    supabaseManager: SupabaseManager,
+    dataStoreManager: DataStoreManager,
+    downloadStates: MutableMap<Long, Float>,
+    downloadManager: DownloadManager?,
+    ownedPresets: List<UserPresetLog>,
+    commentsCountMap: Map<Long, Int>,
+    onBack: () -> Unit,
+    onRefreshProfile: () -> Unit,
+    onLoveIncrement: (Long) -> Unit,
+    onCommentAdded: (Long) -> Unit,
+    detailViews: Long,
+    detailLoves: Long,
+    detailDownloads: Long,
+    onViewsUpdate: (Long) -> Unit,
+    onLovesUpdate: (Long) -> Unit,
+    onDownloadsUpdate: (Long) -> Unit,
+    confirmDownloadPreset: (Preset) -> Unit
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val density = LocalDensity.current
+    
+    var comments by remember { mutableStateOf<List<PresetComment>>(emptyList()) }
+    var isFetchingComments by remember { mutableStateOf(false) }
+    var commentInput by remember { mutableStateOf("") }
+    var isPostingComment by remember { mutableStateOf(false) }
+    var isLoved by remember(preset) { mutableStateOf(false) }
+
+    var showDoubleTapHeart by remember { mutableStateOf(false) }
+    val floatingHearts = remember { mutableStateListOf<FloatingHeart>() }
+    var showBadWordDialog by remember { mutableStateOf(false) }
+    
+    var replyingToComment by remember { mutableStateOf<PresetComment?>(null) }
+    var replyingToUsername by remember { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
+    
+    var imageOffset by remember { mutableStateOf(Offset.Zero) }
+    var loveIconOffset by remember { mutableStateOf(Offset.Zero) }
+
+    val fetchComments = {
+        scope.launch {
+            isFetchingComments = true
+            comments = supabaseManager.getComments(preset.id)
+            isFetchingComments = false
+        }
+    }
+
+    LaunchedEffect(preset) {
+        fetchComments()
+        scope.launch {
+            try {
+                supabaseManager.incrementViews(preset.id, preset.views)
+                onViewsUpdate(detailViews + 1)
+            } catch (_: Exception) {}
+        }
+    }
+
+    LaunchedEffect(replyingToComment) {
+        if (replyingToComment != null) {
+            focusRequester.requestFocus()
+        }
+    }
+
+    if (showBadWordDialog) {
+        AlertDialog(
+            onDismissRequest = { showBadWordDialog = false },
+            confirmButton = {
+                TextButton(onClick = { showBadWordDialog = false }) {
+                    Text("OK", color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)
+                }
+            },
+            title = { Text("Peringatan Bahasa", fontWeight = FontWeight.Bold) },
+            text = { Text("Komentar Anda mengandung bahasa kasar atau tidak pantas. Harap berkomentar dengan sopan.") }
+        )
+    }
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+        // Top Instagram Bar
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(horizontal = 4.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = onBack) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Kembali",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "Preset Details",
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+        }
+
+        // Main scrollable content
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(bottom = 16.dp)
+        ) {
+            // Instagram Header: User Avatar & Name
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surfaceVariant),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(id = getBrandAvatarForUsername(preset.author)),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Column {
+                        Text(
+                            text = preset.author.ifBlank { "Creator" },
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        )
+                        val catDisplay = when (preset.category.lowercase()) {
+                            "nature" -> stringResource(R.string.category_nature)
+                            "structure", "structur", "bangunan" -> stringResource(R.string.category_structure)
+                            else -> preset.category
+                        }
+                        Text(
+                            text = catDisplay,
+                            fontSize = 11.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                        )
+                    }
+                }
+            }
+
+            // Preview Image
+            item {
+                val detailPreviewUrls = remember(preset.preview_url) {
+                    preset.preview_url.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                }
+                
+                val heartScale by animateFloatAsState(
+                    targetValue = if (showDoubleTapHeart) 1.3f else 0f,
+                    animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+                    label = "heartScale"
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16f / 9f)
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                        .onGloballyPositioned { coords ->
+                            imageOffset = coords.positionInRoot()
+                        }
+                        .pointerInput(Unit) {
+                            detectTapGestures(
+                                onDoubleTap = { tapOffset ->
+                                    showDoubleTapHeart = true
+                                    if (!isLoved) {
+                                        isLoved = true
+                                        onLovesUpdate(detailLoves + 1)
+                                        scope.launch {
+                                            try {
+                                                supabaseManager.incrementLoves(preset.id, preset.loves)
+                                            } catch (_: Exception) {}
+                                        }
+                                    }
+                                    // Trigger TikTok floating hearts burst
+                                    val startX = with(density) { (imageOffset.x + tapOffset.x).toDp().value }
+                                    val startY = with(density) { (imageOffset.y + tapOffset.y).toDp().value }
+                                    spawnHeartsBurst(floatingHearts, startX, startY)
+
+                                    // Center heart animation timeout
+                                    scope.launch {
+                                        delay(600)
+                                        showDoubleTapHeart = false
+                                    }
+                                }
+                            )
+                        }
+                ) {
+                    if (detailPreviewUrls.size <= 1) {
+                        AsyncImage(
+                            model = detailPreviewUrls.firstOrNull() ?: "",
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } else {
+                        val detailPagerState = androidx.compose.foundation.pager.rememberPagerState(pageCount = { detailPreviewUrls.size })
+                        androidx.compose.foundation.pager.HorizontalPager(
+                            state = detailPagerState,
+                            modifier = Modifier.fillMaxSize()
+                        ) { page ->
+                            AsyncImage(
+                                model = detailPreviewUrls[page],
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        }
+                        Row(
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(bottom = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            repeat(detailPreviewUrls.size) { index ->
+                                val dotColor = if (detailPagerState.currentPage == index)
+                                    Color(0xFFFF9800)
+                                else
+                                    Color.White.copy(alpha = 0.5f)
+                                Box(
+                                    modifier = Modifier
+                                        .size(6.dp)
+                                        .clip(CircleShape)
+                                        .background(dotColor)
+                                )
+                            }
+                        }
+                    }
+
+                    // Centered Instagram Big Double Tap Heart
+                    if (heartScale > 0.01f) {
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = null,
+                            tint = Color.White.copy(alpha = 0.9f),
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                                .scale(heartScale)
+                                .size(80.dp)
+                        )
+                    }
+                }
+            }
+
+            // Stats Interaction Bar
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(
+                        onClick = {
+                            isLoved = !isLoved
+                            if (isLoved) {
+                                onLovesUpdate(detailLoves + 1)
+                                scope.launch {
+                                    try { supabaseManager.incrementLoves(preset.id, preset.loves) } catch (_: Exception) {}
+                                }
+                                // Trigger floating hearts burst
+                                val startX = with(density) { loveIconOffset.x.toDp().value }
+                                val startY = with(density) { loveIconOffset.y.toDp().value }
+                                spawnHeartsBurst(floatingHearts, startX, startY)
+                            } else {
+                                onLovesUpdate((detailLoves - 1).coerceAtLeast(0))
+                            }
+                        },
+                        modifier = Modifier.onGloballyPositioned { coords ->
+                            loveIconOffset = coords.positionInRoot()
+                        }
+                    ) {
+                        Icon(
+                            imageVector = if (isLoved) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = "Love",
+                            tint = if (isLoved) Color(0xFFE91E63) else MaterialTheme.colorScheme.onSurface,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+
+                    Icon(
+                        imageVector = Icons.Default.Comment,
+                        contentDescription = "Comments",
+                        modifier = Modifier.size(24.dp),
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "${comments.size}",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    // Views Stats
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Visibility,
+                            contentDescription = "Views",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = "$detailViews",
+                            fontSize = 12.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(12.dp))
+
+                    // Downloads Stats
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.Download,
+                            contentDescription = "Downloads",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = "$detailDownloads",
+                            fontSize = 12.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+
+                // Likes Count Caption
+                Text(
+                    text = "$detailLoves likes",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 2.dp)
+                )
+            }
+
+            // Description
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                append(preset.author.ifBlank { "Creator" })
+                                append(" ")
+                            }
+                            append(preset.description.ifEmpty { stringResource(R.string.no_description) })
+                        },
+                        fontSize = 14.sp,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+
+            // CTA Download Button
+            item {
+                val isAlreadyOwned = ownedPresets.any { it.presetId == preset.id }
+                val isPremium = !preset.is_free
+                val downloadProgress = downloadStates[preset.id]
+                val isDownloaded = downloadManager?.isDownloaded("${preset.name}.bin") == true
+
+                Button(
+                    onClick = { confirmDownloadPreset(preset) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (isDownloaded)
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)
+                        else
+                            Color(0xFFFF9800)
+                    ),
+                    enabled = downloadProgress == null
+                ) {
+                    if (isDownloaded) {
+                        Icon(
+                            imageVector = Icons.Default.CheckCircle,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Downloaded (Klik untuk buka file)",
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold
+                        )
+                    } else if (downloadProgress != null && downloadProgress in 0f..1f) {
+                        CircularProgressIndicator(
+                            color = Color.White,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.Download,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        val btnText = if (isPremium && !isAlreadyOwned) "Unduh (Butuh 10 Koin)" else "Unduh Preset (Gratis)"
+                        Text(
+                            text = btnText,
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+                
+                HorizontalDivider(modifier = Modifier.padding(top = 8.dp))
+            }
+
+            // Comments Section Header
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.discussion, comments.size),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    IconButton(onClick = { fetchComments() }) {
+                        Icon(
+                            imageVector = Icons.Default.Refresh,
+                            contentDescription = "Refresh Komentar",
+                            tint = Color(0xFFFF9800)
+                        )
+                    }
+                }
+            }
+
+            // Comments List (Threaded)
+            if (isFetchingComments) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            color = Color(0xFFFF9800),
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
+            } else if (comments.isEmpty()) {
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 24.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.no_comments),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            } else {
+                val parentComments = comments.filter { it.parentCommentId == null }
+                val repliesMap = comments.filter { it.parentCommentId != null }.groupBy { it.parentCommentId }
+
+                parentComments.forEach { parent ->
+                    item {
+                        CommentRowItem(
+                            comment = parent,
+                            onReplyClick = {
+                                replyingToComment = parent
+                                replyingToUsername = parent.username.replace(" ", "").lowercase()
+                                commentInput = ""
+                            }
+                        )
+                    }
+                    val replies = (repliesMap[parent.id] ?: emptyList()).sortedBy { it.id ?: 0L }
+                    replies.forEach { reply ->
+                        item {
+                            CommentRowItem(
+                                comment = reply,
+                                isReply = true,
+                                onReplyClick = {
+                                    replyingToComment = parent
+                                    replyingToUsername = reply.username.replace(" ", "").lowercase()
+                                    commentInput = ""
+                                }
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        // Input Field Bar at bottom
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.surface)
+                .navigationBarsPadding()
+        ) {
+            replyingToComment?.let { replyComment ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                        .padding(horizontal = 16.dp, vertical = 6.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Membalas @$replyingToUsername",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    IconButton(
+                        onClick = {
+                            replyingToComment = null
+                            replyingToUsername = ""
+                        },
+                        modifier = Modifier.size(18.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Batal Balas",
+                            modifier = Modifier.size(14.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+            
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                OutlinedTextField(
+                    value = commentInput,
+                    onValueChange = { commentInput = it },
+                    placeholder = { Text(stringResource(R.string.write_comment), fontSize = 13.sp) },
+                    prefix = {
+                        if (replyingToComment != null && replyingToUsername.isNotEmpty()) {
+                            Text(
+                                text = "@$replyingToUsername ",
+                                color = MaterialTheme.colorScheme.onSurface,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp,
+                                modifier = Modifier.padding(end = 4.dp)
+                            )
+                        }
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                        .focusRequester(focusRequester),
+                    maxLines = 3,
+                    singleLine = false,
+                    shape = RoundedCornerShape(20.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color(0xFFFF9800),
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+                    )
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                IconButton(
+                    onClick = {
+                        val trimmed = commentInput.trim()
+                        if (trimmed.isNotEmpty()) {
+                            if (containsBadWords(trimmed)) {
+                                showBadWordDialog = true
+                                commentInput = ""
+                                replyingToComment = null
+                                return@IconButton
+                            }
+                            scope.launch {
+                                isPostingComment = true
+                                try {
+                                    runWithTokenRefresh(session, supabaseManager, dataStoreManager) { token ->
+                                        val finalComment = if (replyingToComment != null && replyingToUsername.isNotEmpty()) {
+                                            "@$replyingToUsername $trimmed"
+                                        } else {
+                                            trimmed
+                                        }
+                                        val newComment = PresetComment(
+                                            presetId = preset.id,
+                                            userId = session?.userId,
+                                            username = session?.username ?: "Guest",
+                                            comment = finalComment,
+                                            parentCommentId = replyingToComment?.id
+                                        )
+                                        supabaseManager.postComment(
+                                            comment = newComment,
+                                            token = token
+                                        )
+                                    }
+                                    commentInput = ""
+                                    replyingToComment = null
+                                    replyingToUsername = ""
+                                    fetchComments()
+                                    onCommentAdded(preset.id)
+                                } catch (e: Exception) {
+                                    Toast.makeText(context, "Komentar gagal terkirim: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                                } finally {
+                                    isPostingComment = false
+                                }
+                            }
+                        }
+                    },
+                    enabled = !isPostingComment && commentInput.trim().isNotEmpty()
+                ) {
+                    if (isPostingComment) {
+                        CircularProgressIndicator(color = Color(0xFFFF9800), modifier = Modifier.size(20.dp))
+                    } else {
+                        Icon(Icons.Default.Send, contentDescription = "Kirim", tint = Color(0xFFFF9800))
+                    }
+                }
+            }
+        }
+    }
+    
+    // Floating Hearts Overlay covering the entire screen
+    FloatingHearts(
+        hearts = floatingHearts,
+        onRemoveHeart = { id ->
+            floatingHearts.removeAll { it.id == id }
+        }
+    )
+}
+}
+}
+
+@Composable
+fun CommentRowItem(
+    comment: PresetComment,
+    isReply: Boolean = false,
+    onReplyClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = if (isReply) 52.dp else 16.dp,
+                end = 16.dp,
+                top = 8.dp,
+                bottom = 8.dp
+            ),
+        verticalAlignment = Alignment.Top
+    ) {
+        Box(
+            modifier = Modifier
+                .size(if (isReply) 28.dp else 34.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surfaceVariant),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = getBrandAvatarForUsername(comment.username)),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+        }
+        
+        Spacer(modifier = Modifier.width(10.dp))
+        
+        Column(modifier = Modifier.weight(1f)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = comment.username,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFFF9800)
+                )
+                val cleanDate = comment.createdAt?.split("T")?.firstOrNull() ?: ""
+                Text(
+                    text = cleanDate,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(2.dp))
+            
+            val commentText = comment.comment
+            val annotatedComment = remember(commentText) {
+                buildAnnotatedString {
+                    if (commentText.startsWith("@")) {
+                        val firstSpace = commentText.indexOf(' ')
+                        if (firstSpace != -1) {
+                            val mention = commentText.substring(0, firstSpace)
+                            val rest = commentText.substring(firstSpace)
+                            withStyle(style = SpanStyle(color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)) {
+                                append(mention)
+                            }
+                            append(rest)
+                        } else {
+                            append(commentText)
+                        }
+                    } else {
+                        append(commentText)
+                    }
+                }
+            }
+            Text(
+                text = annotatedComment,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            
+            Spacer(modifier = Modifier.height(4.dp))
+            
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "Balas",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                    modifier = Modifier.clickable { onReplyClick() }
+                )
+            }
+        }
+    }
+}
+
+suspend fun <T> runWithTokenRefresh(
+    session: UserSession?,
+    supabaseManager: SupabaseManager,
+    dataStoreManager: DataStoreManager,
+    block: suspend (String) -> T
+): T {
+    val currentSession = session ?: throw Exception("Sesi kosong, silakan login terlebih dahulu.")
+    try {
+        return block(currentSession.accessToken)
+    } catch (e: Exception) {
+        val isJwtExpired = e.message?.contains("JWT expired", ignoreCase = true) == true
+        if (isJwtExpired) {
+            if (currentSession.refreshToken.isNotEmpty()) {
+                try {
+                    val refreshResp = supabaseManager.refreshToken(currentSession.refreshToken)
+                    val newAccessToken = refreshResp.accessToken
+                    val newRefreshToken = refreshResp.refreshToken
+                    if (newAccessToken != null) {
+                        val updatedSession = currentSession.copy(
+                            accessToken = newAccessToken,
+                            refreshToken = newRefreshToken ?: currentSession.refreshToken
+                        )
+                        dataStoreManager.saveUserSession(updatedSession)
+                        return block(newAccessToken)
+                    }
+                } catch (refreshEx: Exception) {
+                    dataStoreManager.clearUserSession()
+                    throw Exception("Sesi Anda telah berakhir, silakan login kembali.", refreshEx)
+                }
+            } else {
+                // Sesi lama sebelum update tidak punya refresh_token, hapus agar user diarahkan login ulang
+                dataStoreManager.clearUserSession()
+                throw Exception("Sesi Anda telah berakhir, silakan login kembali.")
+            }
+        }
+        throw e
     }
 }

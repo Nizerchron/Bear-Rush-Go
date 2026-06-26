@@ -18,6 +18,7 @@ data class UserSession(
     val email: String,
     val username: String,
     val accessToken: String,
+    val refreshToken: String = "",
     val coins: Int
 )
 
@@ -27,6 +28,7 @@ class DataStoreManager(private val context: Context) {
     private val USER_EMAIL_KEY = stringPreferencesKey("user_email")
     private val USERNAME_KEY = stringPreferencesKey("username")
     private val ACCESS_TOKEN_KEY = stringPreferencesKey("access_token")
+    private val REFRESH_TOKEN_KEY = stringPreferencesKey("refresh_token")
     private val COINS_KEY = intPreferencesKey("coins")
 
     val isDarkMode: Flow<Boolean> = context.dataStore.data
@@ -46,9 +48,10 @@ class DataStoreManager(private val context: Context) {
             val email = preferences[USER_EMAIL_KEY]
             val username = preferences[USERNAME_KEY]
             val accessToken = preferences[ACCESS_TOKEN_KEY]
+            val refreshToken = preferences[REFRESH_TOKEN_KEY] ?: ""
             val coins = preferences[COINS_KEY] ?: 100
             if (userId != null && email != null && accessToken != null) {
-                UserSession(userId, email, username ?: "", accessToken, coins)
+                UserSession(userId, email, username ?: "", accessToken, refreshToken, coins)
             } else {
                 null
             }
@@ -60,6 +63,7 @@ class DataStoreManager(private val context: Context) {
             preferences[USER_EMAIL_KEY] = session.email
             preferences[USERNAME_KEY] = session.username
             preferences[ACCESS_TOKEN_KEY] = session.accessToken
+            preferences[REFRESH_TOKEN_KEY] = session.refreshToken
             preferences[COINS_KEY] = session.coins
         }
     }
@@ -76,6 +80,7 @@ class DataStoreManager(private val context: Context) {
             preferences.remove(USER_EMAIL_KEY)
             preferences.remove(USERNAME_KEY)
             preferences.remove(ACCESS_TOKEN_KEY)
+            preferences.remove(REFRESH_TOKEN_KEY)
             preferences.remove(COINS_KEY)
         }
     }

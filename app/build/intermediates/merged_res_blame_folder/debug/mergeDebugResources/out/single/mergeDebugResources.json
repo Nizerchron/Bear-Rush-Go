@@ -1,138 +1,158 @@
 [
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/xml_backup_rules.xml.flat",
-        "source": "com.bearrushmod.app-main-64:/xml/backup_rules.xml"
+        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_realme.jpg.flat",
+        "source": "com.bearrushmod.app-main-64:/drawable/bear_realme.jpg"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/xml_data_extraction_rules.xml.flat",
-        "source": "com.bearrushmod.app-main-64:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xxxhdpi_bg_welcome_header.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xxxhdpi/bg_welcome_header.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/xml_file_paths.xml.flat",
-        "source": "com.bearrushmod.app-main-64:/xml/file_paths.xml"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxhdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-hdpi_bg_welcome_header.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-hdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xhdpi_geokar.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xhdpi/geokar.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-hdpi_bg_welcome_header.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-hdpi/bg_welcome_header.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxxhdpi_geokar.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxxhdpi\\geokar.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-hdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xhdpi_bg_welcome_header.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-hdpi_ic_launcher_background.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-hdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-mdpi_bg_welcome_header.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-mdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-mdpi_bg_welcome_header.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-mdpi/bg_welcome_header.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-mdpi_geokar.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-mdpi\\geokar.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxhdpi_ic_launcher_background.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-hdpi_geokar.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-hdpi\\geokar.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-hdpi_geokar.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-hdpi/geokar.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xxxhdpi_geokar.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xxxhdpi/geokar.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xhdpi_geokar.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xhdpi\\geokar.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xhdpi_bg_welcome_header.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xhdpi/bg_welcome_header.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxxhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxhdpi_bg_welcome_header.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xxhdpi_geokar.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xxhdpi/geokar.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-mdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-mdpi_geokar.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-mdpi/geokar.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-mdpi_ic_launcher_background.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-mdpi/ic_launcher_background.png"
+        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_xiaomi.jpg.flat",
+        "source": "com.bearrushmod.app-main-64:/drawable/bear_xiaomi.jpg"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xhdpi_ic_launcher_background.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable-xxhdpi_bg_welcome_header.png.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable-xxhdpi/bg_welcome_header.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxxhdpi_bg_welcome_header.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxxhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.bearrushmod.app-main-64:/mipmap-xhdpi/ic_launcher_foreground.png"
+        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_default.jpg.flat",
+        "source": "com.bearrushmod.app-main-64:/drawable/bear_default.jpg"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_samsung.jpg.flat",
+        "source": "com.bearrushmod.app-main-64:/drawable/bear_samsung.jpg"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_oppo.jpg.flat",
+        "source": "com.bearrushmod.app-main-64:/drawable/bear_oppo.jpg"
+    },
+    {
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxhdpi_geokar.png.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxhdpi\\geokar.png"
+    },
+    {
+        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\file_paths.xml"
     }
 ]

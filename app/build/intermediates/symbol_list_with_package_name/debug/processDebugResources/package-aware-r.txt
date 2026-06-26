@@ -93,6 +93,11 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 drawable abc_vector_test
+drawable bear_default
+drawable bear_oppo
+drawable bear_realme
+drawable bear_samsung
+drawable bear_xiaomi
 drawable bg_welcome_header
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -263,6 +268,11 @@ string call_notification_incoming_text
 string call_notification_ongoing_text
 string call_notification_screening_text
 string categories
+string category_all
+string category_label
+string category_nature
+string category_structure
+string close
 string close_drawer
 string close_sheet
 string common_google_play_services_enable_button
@@ -286,6 +296,7 @@ string common_signin_button_text_long
 string dark_mode
 string default_error_message
 string default_popup_window_title
+string discussion
 string download
 string download_sba
 string dropdown_menu
@@ -351,6 +362,8 @@ string m3c_time_picker_pm
 string m3c_tooltip_long_press_label
 string m3c_tooltip_pane_description
 string navigation_menu
+string no_comments
+string no_description
 string not_selected
 string popular_presets
 string range_end
@@ -366,6 +379,7 @@ string tab
 string template_percent
 string tooltip_description
 string tooltip_label
+string write_comment
 style DialogWindowTheme
 style EdgeToEdgeFloatingDialogTheme
 style EdgeToEdgeFloatingDialogWindowTheme

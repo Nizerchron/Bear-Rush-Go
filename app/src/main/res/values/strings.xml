@@ -9,4 +9,14 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="light_mode">Light Mode</string>
     <string name="download_sba">Download SBA Geokar</string>
+    
+    <string name="category_all">All</string>
+    <string name="category_nature">Nature</string>
+    <string name="category_structure">Structure</string>
+    <string name="category_label">Category: %1$s</string>
+    <string name="close">Close</string>
+    <string name="no_description">No description available.</string>
+    <string name="discussion">Discussion (%1$d)</string>
+    <string name="no_comments">No comments yet. Be the first to comment!</string>
+    <string name="write_comment">Write a comment...</string>
 </resources>
