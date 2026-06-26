@@ -24,6 +24,7 @@ android {
         // ponytail: ganti dengan key kamu sendiri. Jangan commit key asli ke repo publik!
         buildConfigField("String", "SUPABASE_URL", "\"https://qltksahggprpjqwyqiik.supabase.co\"")
         buildConfigField("String", "SUPABASE_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsdGtzYWhnZ3BycGpxd3lxaWlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIwMDc5MjYsImV4cCI6MjA5NzU4MzkyNn0.tywf81lm9HHfLuexewdLliAEE7dee76jNFD8fjYKLIk\"")
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"735712091358-6kchjv1evnda339ndrnbk6gqn4f5c450.apps.googleusercontent.com\"")
         buildConfigField("int", "VERSION_CODE", "1")
         buildConfigField("String", "VERSION_NAME", "\"1.0.0\"")
     }
@@ -73,6 +74,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.5")
     implementation("androidx.navigation:navigation-compose:2.8.3")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")

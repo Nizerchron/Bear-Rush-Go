@@ -5,4 +5,4 @@ com.bearrushmod.app-packageDebugResources-3 F:\Bear Rush Mod\app\build\intermedi
 com.bearrushmod.app-debug-4 F:\Bear Rush Mod\app\build\intermediates\merged_res\debug\mergeDebugResources
 com.bearrushmod.app-debug-5 F:\Bear Rush Mod\app\src\debug\res
 com.bearrushmod.app-main-6 F:\Bear Rush Mod\app\src\main\res
-gradleHome-0 H:\AUDI_MONSTER\.gradle
+gradleHome-0 C:\Users\nizer\.gradle

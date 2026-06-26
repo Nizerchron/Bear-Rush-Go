@@ -36,22 +36,22 @@
 20-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:10:5-82
 20-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:10:22-79
 21    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-21-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:5-76
-21-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:22-73
+21-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:5-76
+21-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:8:22-73
 22    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-22-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:5-81
-22-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:22-78
+22-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:5-81
+22-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:10:22-78
 23    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-23-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:5-110
-23-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:22-107
+23-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:5-110
+23-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:11:22-107
 24    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" />
-24-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:5-83
-24-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:22-80
+24-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:5-83
+24-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:13:22-80
 25
 26    <queries>
-26-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:15:5-19:15
+26-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:15:5-19:15
 27        <intent>
-27-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:16:9-18:18
+27-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:16:9-18:18
 28            <action android:name="android.intent.action.MAIN" />
 28-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:38:17-69
 28-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:38:25-66
@@ -59,15 +59,15 @@
 30    </queries>
 31
 32    <permission
-32-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+32-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
 33        android:name="com.bearrushmod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-33-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+33-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
 34        android:protectionLevel="signature" />
-34-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+34-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 35
 36    <uses-permission android:name="com.bearrushmod.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-36-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-36-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+36-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+36-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 37
 38    <application
 38-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:12:5-42:19
@@ -76,7 +76,7 @@
 40        android:allowBackup="true"
 40-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:13:9-35
 41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-41-->[androidx.core:core:1.13.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+41-->[androidx.core:core:1.13.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9454dada191cbbd6dbeab20082539e56\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 42        android:dataExtractionRules="@xml/data_extraction_rules"
 42-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:17:9-65
 43        android:debuggable="true"
@@ -131,157 +131,181 @@
 68-->F:\Bear Rush Mod\app\src\main\AndroidManifest.xml:39:27-74
 69            </intent-filter>
 70        </activity>
-71
-72        <provider
-72-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:22:9-25:40
-73            android:name="com.startapp.sdk.adsbase.StartAppInitProvider"
-73-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:23:13-73
-74            android:authorities="com.bearrushmod.startappinitprovider"
-74-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:24:13-72
-75            android:exported="false" />
-75-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:25:13-37
-76
-77        <activity
-77-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:27:9-30:64
-78            android:name="com.startapp.sdk.adsbase.consent.ConsentActivity"
-78-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:28:13-76
-79            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-79-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:29:13-87
-80            android:theme="@android:style/Theme.Translucent" />
-80-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:30:13-61
-81        <activity
-81-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:31:9-33:52
-82            android:name="com.startapp.sdk.ads.list3d.List3DActivity"
-82-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:32:13-70
-83            android:theme="@android:style/Theme" />
-83-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:33:13-49
-84        <activity
-84-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:34:9-37:64
-85            android:name="com.startapp.sdk.ads.interstitials.OverlayActivity"
-85-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:35:13-78
-86            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-86-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:36:13-87
-87            android:theme="@android:style/Theme.Translucent" />
-87-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:37:13-61
-88
-89        <service android:name="com.startapp.sdk.cachedservice.BackgroundService" />
-89-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:9-84
-89-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:18-81
-90        <service
-90-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:40:9-42:72
-91            android:name="com.startapp.sdk.jobs.SchedulerService"
-91-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:41:13-66
-92            android:permission="android.permission.BIND_JOB_SERVICE" />
-92-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:42:13-69
-93
-94        <receiver
-94-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:44:9-50:20
-95            android:name="com.startapp.sdk.adsbase.remoteconfig.BootCompleteListener"
-95-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:45:13-86
-96            android:exported="true" >
-96-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:46:13-36
-97            <intent-filter>
-97-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:47:13-49:29
-98                <action android:name="android.intent.action.BOOT_COMPLETED" />
-98-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:17-79
-98-->[com.startapp:inapp-sdk:5.1.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:25-76
-99            </intent-filter>
-100        </receiver>
-101
-102        <activity
-102-->[com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
-103            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-103-->[com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
-104            android:exported="false"
-104-->[com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
-105            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-105-->[com.google.android.gms:play-services-base:18.5.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
-106
-107        <meta-data
-107-->[com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
-108            android:name="com.google.android.gms.version"
-108-->[com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
-109            android:value="@integer/google_play_services_version" />
-109-->[com.google.android.gms:play-services-basement:18.4.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
-110
-111        <provider
-111-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-112            android:name="androidx.startup.InitializationProvider"
-112-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
-113            android:authorities="com.bearrushmod.androidx-startup"
-113-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
-114            android:exported="false" >
-114-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
-115            <meta-data
-115-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-116                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-116-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
-117                android:value="androidx.startup" />
-117-->[androidx.emoji2:emoji2:1.3.0] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
-118            <meta-data
-118-->[androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:29:13-31:52
-119                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-119-->[androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:30:17-78
-120                android:value="androidx.startup" />
-120-->[androidx.lifecycle:lifecycle-process:2.8.6] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:31:17-49
-121            <meta-data
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-122                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-123                android:value="androidx.startup" />
-123-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-124        </provider>
-125
-126        <activity
-126-->[androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:23:9-25:39
-127            android:name="androidx.activity.ComponentActivity"
-127-->[androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:24:13-63
-128            android:exported="true" />
-128-->[androidx.compose.ui:ui-test-manifest:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:25:13-36
-129        <activity
-129-->[androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:23:9-25:39
-130            android:name="androidx.compose.ui.tooling.PreviewActivity"
-130-->[androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:24:13-71
-131            android:exported="true" />
-131-->[androidx.compose.ui:ui-tooling-android:1.7.5] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:25:13-36
-132
-133        <receiver
-133-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-134            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-134-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-135            android:directBootAware="false"
-135-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-136            android:enabled="true"
-136-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-137            android:exported="true"
-137-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-138            android:permission="android.permission.DUMP" >
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-139            <intent-filter>
-139-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-140                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-140-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-140-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-141            </intent-filter>
-142            <intent-filter>
-142-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-143                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-143-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-143-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-144            </intent-filter>
-145            <intent-filter>
-145-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-146                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-147            </intent-filter>
-148            <intent-filter>
-148-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-149                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-149-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-149-->[androidx.profileinstaller:profileinstaller:1.3.1] H:\AUDI_MONSTER\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-150            </intent-filter>
-151        </receiver>
-152    </application>
-153
-154</manifest>
+71        <activity
+71-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:23:9-27:75
+72            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+72-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:24:13-93
+73            android:excludeFromRecents="true"
+73-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:25:13-46
+74            android:exported="false"
+74-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:26:13-37
+75            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+75-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:27:13-72
+76        <!--
+77            Service handling Google Sign-In user revocation. For apps that do not integrate with
+78            Google Sign-In, this service will never be started.
+79        -->
+80        <service
+80-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:33:9-37:51
+81            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+81-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:34:13-89
+82            android:exported="true"
+82-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:35:13-36
+83            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+83-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:36:13-107
+84            android:visibleToInstantApps="true" />
+84-->[com.google.android.gms:play-services-auth:21.2.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\a6242fe3c1d4749f04d2f18a88ecdb9d\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:37:13-48
+85
+86        <provider
+86-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:22:9-25:40
+87            android:name="com.startapp.sdk.adsbase.StartAppInitProvider"
+87-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:23:13-73
+88            android:authorities="com.bearrushmod.startappinitprovider"
+88-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:24:13-72
+89            android:exported="false" />
+89-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:25:13-37
+90
+91        <activity
+91-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:27:9-30:64
+92            android:name="com.startapp.sdk.adsbase.consent.ConsentActivity"
+92-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:28:13-76
+93            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+93-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:29:13-87
+94            android:theme="@android:style/Theme.Translucent" />
+94-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:30:13-61
+95        <activity
+95-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:31:9-33:52
+96            android:name="com.startapp.sdk.ads.list3d.List3DActivity"
+96-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:32:13-70
+97            android:theme="@android:style/Theme" />
+97-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:33:13-49
+98        <activity
+98-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:34:9-37:64
+99            android:name="com.startapp.sdk.ads.interstitials.OverlayActivity"
+99-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:35:13-78
+100            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+100-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:36:13-87
+101            android:theme="@android:style/Theme.Translucent" />
+101-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:37:13-61
+102
+103        <service android:name="com.startapp.sdk.cachedservice.BackgroundService" />
+103-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:9-84
+103-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:39:18-81
+104        <service
+104-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:40:9-42:72
+105            android:name="com.startapp.sdk.jobs.SchedulerService"
+105-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:41:13-66
+106            android:permission="android.permission.BIND_JOB_SERVICE" />
+106-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:42:13-69
+107
+108        <receiver
+108-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:44:9-50:20
+109            android:name="com.startapp.sdk.adsbase.remoteconfig.BootCompleteListener"
+109-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:45:13-86
+110            android:exported="true" >
+110-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:46:13-36
+111            <intent-filter>
+111-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:47:13-49:29
+112                <action android:name="android.intent.action.BOOT_COMPLETED" />
+112-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:17-79
+112-->[com.startapp:inapp-sdk:5.1.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\bd6b764d639e4ec04fb52be3f7740442\transformed\jetified-inapp-sdk-5.1.0\AndroidManifest.xml:48:25-76
+113            </intent-filter>
+114        </receiver>
+115
+116        <activity
+116-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+117            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+117-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+118            android:exported="false"
+118-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+119            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+119-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\06bee01493f3ef7cd0e3d2849027031f\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+120
+121        <meta-data
+121-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+122            android:name="com.google.android.gms.version"
+122-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+123            android:value="@integer/google_play_services_version" />
+123-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9beae64c4422a0ce21e1ce5344c4ab9a\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+124
+125        <provider
+125-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+126            android:name="androidx.startup.InitializationProvider"
+126-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+127            android:authorities="com.bearrushmod.androidx-startup"
+127-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+128            android:exported="false" >
+128-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+129            <meta-data
+129-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+130                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+130-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+131                android:value="androidx.startup" />
+131-->[androidx.emoji2:emoji2:1.3.0] C:\Users\nizer\.gradle\caches\9.4.1\transforms\9c1bb617ad7fea892bf881e7e797165e\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+132            <meta-data
+132-->[androidx.lifecycle:lifecycle-process:2.8.6] C:\Users\nizer\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:29:13-31:52
+133                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+133-->[androidx.lifecycle:lifecycle-process:2.8.6] C:\Users\nizer\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:30:17-78
+134                android:value="androidx.startup" />
+134-->[androidx.lifecycle:lifecycle-process:2.8.6] C:\Users\nizer\.gradle\caches\9.4.1\transforms\49de141111b1616d6a15591bb718abb8\transformed\jetified-lifecycle-process-2.8.6\AndroidManifest.xml:31:17-49
+135            <meta-data
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+136                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+137                android:value="androidx.startup" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+138        </provider>
+139
+140        <activity
+140-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:23:9-25:39
+141            android:name="androidx.activity.ComponentActivity"
+141-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:24:13-63
+142            android:exported="true" />
+142-->[androidx.compose.ui:ui-test-manifest:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\f0888f79d570ac691771f5021c3731a5\transformed\jetified-ui-test-manifest-1.7.5\AndroidManifest.xml:25:13-36
+143        <activity
+143-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:23:9-25:39
+144            android:name="androidx.compose.ui.tooling.PreviewActivity"
+144-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:24:13-71
+145            android:exported="true" />
+145-->[androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\nizer\.gradle\caches\9.4.1\transforms\4f3aaa9733ee1ae54de66fb5e97875dd\transformed\jetified-ui-tooling-release\AndroidManifest.xml:25:13-36
+146
+147        <receiver
+147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+148            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+148-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+149            android:directBootAware="false"
+149-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+150            android:enabled="true"
+150-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+151            android:exported="true"
+151-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+152            android:permission="android.permission.DUMP" >
+152-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+153            <intent-filter>
+153-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+154                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+154-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+154-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+155            </intent-filter>
+156            <intent-filter>
+156-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+157                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+157-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+157-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+158            </intent-filter>
+159            <intent-filter>
+159-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+160                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+160-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+160-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+161            </intent-filter>
+162            <intent-filter>
+162-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+163                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+163-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+163-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\nizer\.gradle\caches\9.4.1\transforms\2e1e391d9689ce5ef27ca8b935937be1\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+164            </intent-filter>
+165        </receiver>
+166    </application>
+167
+168</manifest>

@@ -27,6 +27,7 @@ import com.bearrushmod.data.AdsManager
 import com.bearrushmod.data.DataStoreManager
 import com.bearrushmod.data.DownloadManager
 import com.bearrushmod.data.PresetRepository
+import com.bearrushmod.data.SupabaseManager
 import com.bearrushmod.data.UpdateManager
 import com.bearrushmod.model.Category
 import com.bearrushmod.model.Preset
@@ -38,6 +39,7 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
     private lateinit var repository: PresetRepository
     private val downloadManager = DownloadManager()
+    private val supabaseManager = SupabaseManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -231,7 +233,9 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         isRefreshing = isRefreshing,
-                        downloadManager = downloadManager
+                        downloadManager = downloadManager,
+                        dataStoreManager = dataStoreManager,
+                        supabaseManager = supabaseManager
                     )
                 }
             }

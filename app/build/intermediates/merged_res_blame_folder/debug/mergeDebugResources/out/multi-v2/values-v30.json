@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.bearrushmod.app-mergeDebugResources-2:/values-v30/values-v30.xml",
+            "outputFile": "com.bearrushmod.app-mergeDebugResources-60:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "H:\\AUDI_MONSTER\\.gradle\\caches\\9.4.1\\transforms\\501ebaea409782e1d84435c32b2cfe1c\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
+                    "source": "C:\\Users\\nizer\\.gradle\\caches\\9.4.1\\transforms\\501ebaea409782e1d84435c32b2cfe1c\\transformed\\jetified-material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
