@@ -51,6 +51,15 @@ data class UserProfile(
 )
 
 @Serializable
+data class UserCreateRequest(
+    val id: String,
+    val email: String,
+    val username: String,
+    val nickname: String,
+    val coins: Int = 100
+)
+
+@Serializable
 data class UserPresetLog(
     val id: Long? = null,
     @SerialName("user_id") val userId: String,
@@ -65,9 +74,9 @@ data class UserPresetLog(
 data class PresetComment(
     val id: Long? = null,
     @SerialName("preset_id") val presetId: Long,
-    @SerialName("user_id") val userId: String? = null,
     val username: String = "Guest",
     val comment: String,
+    @SerialName("parent_comment_id") val parentCommentId: Long? = null,
     @SerialName("created_at") val createdAt: String? = null
 )
 
@@ -120,8 +129,13 @@ class SupabaseManager(
         response.body()
     }
 
-    suspend fun getProfile(userId: String, token: String): UserProfile = withContext(Dispatchers.IO) {
-        val response = client.get("$supabaseUrl/rest/v1/profiles?id=eq.$userId") {
+    suspend fun getProfile(
+        userId: String,
+        token: String,
+        email: String = "",
+        username: String = ""
+    ): UserProfile = withContext(Dispatchers.IO) {
+        val response = client.get("$supabaseUrl/rest/v1/users?id=eq.$userId") {
             header("apikey", supabaseKey)
             header("Authorization", "Bearer $token")
         }
@@ -129,12 +143,36 @@ class SupabaseManager(
             throw Exception("Gagal mengambil profil: ${response.bodyAsText()}")
         }
         val list: List<UserProfile> = response.body()
-        if (list.isEmpty()) throw Exception("Profil tidak ditemukan")
-        list.first()
+        if (list.isEmpty()) {
+            val fallbackUsername = if (username.isNotEmpty()) username else email.split("@").firstOrNull() ?: "user_${userId.take(5)}"
+            val createResponse = client.post("$supabaseUrl/rest/v1/users") {
+                contentType(ContentType.Application.Json)
+                header("apikey", supabaseKey)
+                header("Authorization", "Bearer $token")
+                header("Prefer", "return=representation")
+                setBody(UserCreateRequest(
+                    id = userId,
+                    email = email,
+                    username = fallbackUsername,
+                    nickname = fallbackUsername,
+                    coins = 100
+                ))
+            }
+            if (!createResponse.status.isSuccess()) {
+                throw Exception("Profil tidak ditemukan dan gagal dibuat otomatis: ${createResponse.bodyAsText()}")
+            }
+            val createdList: List<UserProfile> = createResponse.body()
+            if (createdList.isEmpty()) {
+                throw Exception("Profil gagal dibuat otomatis")
+            }
+            createdList.first()
+        } else {
+            list.first()
+        }
     }
 
     suspend fun updateProfile(userId: String, token: String, username: String, bio: String, avatarUrl: String): UserProfile = withContext(Dispatchers.IO) {
-        val response = client.patch("$supabaseUrl/rest/v1/profiles?id=eq.$userId") {
+        val response = client.patch("$supabaseUrl/rest/v1/users?id=eq.$userId") {
             contentType(ContentType.Application.Json)
             header("apikey", supabaseKey)
             header("Authorization", "Bearer $token")
@@ -149,7 +187,7 @@ class SupabaseManager(
     }
 
     suspend fun updateCoins(userId: String, token: String, newCoins: Int): UserProfile = withContext(Dispatchers.IO) {
-        val response = client.patch("$supabaseUrl/rest/v1/profiles?id=eq.$userId") {
+        val response = client.patch("$supabaseUrl/rest/v1/users?id=eq.$userId") {
             contentType(ContentType.Application.Json)
             header("apikey", supabaseKey)
             header("Authorization", "Bearer $token")

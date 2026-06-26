@@ -102,7 +102,7 @@ fun MainScreen(
         if (currentSession != null) {
             isLoadingProfile = true
             try {
-                profile = supabaseManager.getProfile(currentSession.userId, currentSession.accessToken)
+                profile = supabaseManager.getProfile(currentSession.userId, currentSession.accessToken, currentSession.email, currentSession.username)
                 ownedPresets = supabaseManager.getOwnedPresets(currentSession.userId, currentSession.accessToken)
             } catch (e: Exception) {
                 if (e.message?.contains("Jwt is expired", ignoreCase = true) == true) {
@@ -123,7 +123,7 @@ fun MainScreen(
             val currentSession = session
             if (currentSession != null) {
                 try {
-                    val freshProfile = supabaseManager.getProfile(currentSession.userId, currentSession.accessToken)
+                    val freshProfile = supabaseManager.getProfile(currentSession.userId, currentSession.accessToken, currentSession.email, currentSession.username)
                     profile = freshProfile
                     dataStoreManager.updateCoins(freshProfile.coins)
                     ownedPresets = supabaseManager.getOwnedPresets(currentSession.userId, currentSession.accessToken)
@@ -543,7 +543,6 @@ fun MainScreen(
                                             val currentSession = session
                                             val newComment = PresetComment(
                                                 presetId = preset.id,
-                                                userId = currentSession?.userId,
                                                 username = currentSession?.username ?: "Guest",
                                                 comment = commentInput.trim()
                                             )
@@ -895,44 +894,43 @@ fun ProfileTab(
         val launcher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                try {
-                    val account = task.getResult(ApiException::class.java)
-                    val idToken = account.idToken
-                    if (idToken != null) {
-                        isAuthLoading = true
-                        authError = null
-                        scope.launch {
-                            try {
-                                val authResp = supabaseManager.signInWithGoogle(idToken)
-                                val token = authResp.accessToken ?: throw Exception("Token missing")
-                                val userId = authResp.user?.id ?: ""
-                                // Fetch real profile
-                                val realProfile = supabaseManager.getProfile(userId, token)
-                                val sessionObj = UserSession(
-                                    userId = userId,
-                                    email = authResp.user?.email ?: "",
-                                    username = realProfile.username,
-                                    accessToken = token,
-                                    coins = realProfile.coins
-                                )
-                                dataStoreManager.saveUserSession(sessionObj)
-                                Toast.makeText(context, "Login Google berhasil!", Toast.LENGTH_SHORT).show()
-                            } catch (e: Exception) {
-                                authError = e.localizedMessage
-                            } finally {
-                                isAuthLoading = false
-                            }
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                val idToken = account.idToken
+                if (idToken != null) {
+                    isAuthLoading = true
+                    authError = null
+                    scope.launch {
+                        try {
+                            val authResp = supabaseManager.signInWithGoogle(idToken)
+                            val token = authResp.accessToken ?: throw Exception("Token missing")
+                            val userId = authResp.user?.id ?: ""
+                            val userEmail = authResp.user?.email ?: ""
+                            val userUsername = authResp.user?.email?.split("@")?.firstOrNull() ?: ""
+                            val realProfile = supabaseManager.getProfile(userId, token, userEmail, userUsername)
+                            val sessionObj = UserSession(
+                                userId = userId,
+                                email = userEmail,
+                                username = realProfile.username,
+                                accessToken = token,
+                                coins = realProfile.coins
+                            )
+                            dataStoreManager.saveUserSession(sessionObj)
+                            Toast.makeText(context, "Login Google berhasil!", Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) {
+                            authError = e.localizedMessage
+                        } finally {
+                            isAuthLoading = false
                         }
-                    } else {
-                        authError = "Google ID Token tidak ditemukan."
                     }
-                } catch (e: ApiException) {
-                    authError = "Google Sign In gagal: ${e.localizedMessage} (Status Code: ${e.statusCode})"
-                } catch (e: Exception) {
-                    authError = e.localizedMessage
+                } else {
+                    authError = "Google tidak mengembalikan ID Token."
                 }
+            } catch (e: ApiException) {
+                authError = "Google Sign In gagal: ${e.localizedMessage} (Status Code: ${e.statusCode})"
+            } catch (e: Exception) {
+                authError = "Error: ${e.localizedMessage}"
             }
         }
 
@@ -1111,7 +1109,7 @@ fun ProfileTab(
                                         val loginResp = supabaseManager.signIn(emailInput, passwordInput)
                                         val token = loginResp.accessToken ?: throw Exception("Token missing")
                                         val userId = loginResp.user?.id ?: ""
-                                        val realProfile = supabaseManager.getProfile(userId, token)
+                                        val realProfile = supabaseManager.getProfile(userId, token, emailInput, usernameInput)
                                         val sessionObj = UserSession(
                                             userId = userId,
                                             email = emailInput,
