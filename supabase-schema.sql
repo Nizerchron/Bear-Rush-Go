@@ -1,4 +1,4 @@
--- Buat tabel presets (TANPA RLS — paling simpel)
+-- Buat tabel presets dengan RLS Enabled
 CREATE TABLE IF NOT EXISTS presets (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name TEXT NOT NULL,
@@ -7,9 +7,20 @@ CREATE TABLE IF NOT EXISTS presets (
   preview_url TEXT NOT NULL,
   download_url TEXT NOT NULL,
   is_free BOOLEAN NOT NULL DEFAULT true,
+  price BIGINT NOT NULL DEFAULT 0,
   downloads BIGINT NOT NULL DEFAULT 0,
+  loves BIGINT NOT NULL DEFAULT 0,
+  views BIGINT NOT NULL DEFAULT 0,
+  author TEXT NOT NULL DEFAULT 'Unknown',
+  youtube_url TEXT NOT NULL DEFAULT '',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+ALTER TABLE presets ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Presets are viewable by everyone" ON presets FOR SELECT USING (true);
+CREATE POLICY "Anyone can update preset stats" ON presets FOR UPDATE USING (true) WITH CHECK (true);
+
 
 CREATE INDEX IF NOT EXISTS idx_presets_created_at ON presets(created_at DESC);
 

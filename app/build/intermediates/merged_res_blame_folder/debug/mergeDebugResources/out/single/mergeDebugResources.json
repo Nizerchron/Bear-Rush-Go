@@ -1,158 +1,218 @@
 [
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_splash.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_splash.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\backup_rules.xml"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_geokar.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/geokar.webp"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_background.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxxhdpi_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxxhdpi\\geokar.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_monochrome.png"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_realme.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_realme.webp"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_monochrome.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_monochrome.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_realme.jpg.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable/bear_realme.jpg"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_coin_keeper.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_coin_keeper.jpg"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\data_extraction_rules.xml"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xhdpi_bg_welcome_header.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_monochrome.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_monochrome.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_foreground.png"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_default.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_default.webp"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-hdpi_bg_welcome_header.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-hdpi\\bg_welcome_header.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_background.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxxhdpi_geokar.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxxhdpi\\geokar.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\xml_backup_rules.xml.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xhdpi_bg_welcome_header.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xhdpi\\bg_welcome_header.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_default.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_default.jpg"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-mdpi_bg_welcome_header.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-mdpi\\bg_welcome_header.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-mdpi_geokar.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-mdpi\\geokar.png"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_oppo.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_oppo.webp"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxxhdpi_bg_welcome_header.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxxhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-hdpi_geokar.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-hdpi\\geokar.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_gaming_pattern_bg.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\gaming_pattern_bg.jpg"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_monochrome.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_realme.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_realme.jpg"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xhdpi_geokar.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xhdpi\\geokar.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxhdpi_bg_welcome_header.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxhdpi\\bg_welcome_header.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher_background.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\xml_file_paths.xml.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\xml\\file_paths.xml"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-mdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-mdpi\\ic_launcher_background.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxxhdpi_bear_splash.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxxhdpi\\bear_splash.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_oppo.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_oppo.jpg"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-hdpi_bg_welcome_header.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-hdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_xiaomi.jpg.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable/bear_xiaomi.jpg"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-mdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_background.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-hdpi_ic_launcher_monochrome.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-hdpi\\ic_launcher_monochrome.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-hdpi_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-hdpi\\geokar.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxxhdpi_bg_welcome_header.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxxhdpi\\bg_welcome_header.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxhdpi_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxhdpi\\geokar.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_gaming_pattern_bg.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/gaming_pattern_bg.webp"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_default.jpg.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable/bear_default.jpg"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_xiaomi.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_xiaomi.webp"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_samsung.jpg.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable/bear_samsung.jpg"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.bearrushmod.app-debug-62:/drawable_bear_oppo.jpg.flat",
-        "source": "com.bearrushmod.app-main-64:/drawable/bear_oppo.jpg"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-mdpi_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-mdpi\\geokar.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxhdpi_bg_welcome_header.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxhdpi\\bg_welcome_header.png"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\drawable-xxhdpi_geokar.png.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\drawable-xxhdpi\\geokar.png"
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_splash.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_splash.webp"
     },
     {
-        "merged": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-62:\\xml_file_paths.xml.flat",
-        "source": "C:\\Users\\nizer\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-64:\\xml\\file_paths.xml"
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xxxhdpi_bear_coin_keeper.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xxxhdpi\\bear_coin_keeper.jpg"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-hdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_samsung.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_samsung.webp"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_samsung.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_samsung.jpg"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\xml_data_extraction_rules.xml.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-xhdpi_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-xhdpi\\geokar.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_bear_xiaomi.jpg.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\bear_xiaomi.jpg"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "com.bearrushmod.app-debug-4:/drawable_bear_coin_keeper.webp.flat",
+        "source": "com.bearrushmod.app-main-6:/drawable/bear_coin_keeper.webp"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable-mdpi_bg_welcome_header.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable-mdpi\\bg_welcome_header.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-debug-4:\\drawable_geokar.png.flat",
+        "source": "H:\\AUDI_MONSTER\\.gradle\\daemon\\9.4.1\\com.bearrushmod.app-main-6:\\drawable\\geokar.png"
     }
 ]

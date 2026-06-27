@@ -93,7 +93,23 @@ class UploadTool:
         self.cb_category.pack(fill="x", pady=(0, 8))
 
         self.is_free = tk.BooleanVar(value=True)
-        ttk.Checkbutton(main, text="Gratis", variable=self.is_free).pack(anchor="w", pady=(0, 8))
+        self.entry_price_var = tk.StringVar(value="0")
+        
+        frame_price = ttk.Frame(main)
+        frame_price.pack(fill="x", pady=(0, 8))
+        
+        def _on_free_toggle():
+            if self.is_free.get():
+                self.entry_price.configure(state="disabled")
+                self.entry_price_var.set("0")
+            else:
+                self.entry_price.configure(state="normal")
+                self.entry_price_var.set("10")
+                
+        ttk.Checkbutton(frame_price, text="Gratis", variable=self.is_free, command=_on_free_toggle).pack(side="left")
+        ttk.Label(frame_price, text="   Harga (Koin):").pack(side="left")
+        self.entry_price = ttk.Entry(frame_price, textvariable=self.entry_price_var, width=8, state="disabled")
+        self.entry_price.pack(side="left", padx=4)
 
         frame_preview = ttk.Frame(main)
         frame_preview.pack(fill="x", pady=(0, 4))
@@ -220,10 +236,18 @@ class UploadTool:
             self.root.after(0, lambda: self._set_busy(False))
 
     def _insert_supabase(self, name, cat, desc):
+        price_val = 0
+        try:
+            if not self.is_free.get():
+                price_val = int(self.entry_price_var.get())
+        except ValueError:
+            price_val = 10
+
         payload = {
             "name": name, "description": desc, "category": cat,
             "preview_url": self.preview_url, "download_url": self.download_url,
-            "is_free": self.is_free.get()
+            "is_free": self.is_free.get(),
+            "price": price_val
         }
         headers = {
             "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsdGtzYWhnZ3BycGpxd3lxaWlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIwMDc5MjYsImV4cCI6MjA5NzU4MzkyNn0.tywf81lm9HHfLuexewdLliAEE7dee76jNFD8fjYKLIk",

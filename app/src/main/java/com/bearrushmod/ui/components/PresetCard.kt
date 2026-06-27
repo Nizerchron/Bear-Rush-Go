@@ -132,12 +132,12 @@ fun PresetCard(
                 // Badge overlay
                 Surface(
                     shape = RoundedCornerShape(bottomEnd = 8.dp),
-                    color = if (preset.is_free) Color(0xFF4CAF50) else Color(0xFFFF9800),
+                    color = if (preset.price == 0L) Color(0xFF4CAF50) else Color(0xFFFF9800),
                     modifier = Modifier
                         .align(Alignment.TopStart)
                 ) {
                     Text(
-                        text = if (preset.is_free) "FREE" else "PREMIUM",
+                        text = if (preset.price == 0L) "FREE" else "PREMIUM",
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
                         style = MaterialTheme.typography.labelSmall,
                         fontWeight = FontWeight.Black,
@@ -176,7 +176,7 @@ fun PresetCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Loves
@@ -264,7 +264,7 @@ fun PresetCard(
                 enabled = downloadProgress == null,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (isDownloaded)
-                        MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)
+                        Color(0xFF8E8E93)
                     else
                         MaterialTheme.colorScheme.primary
                 ),
@@ -275,12 +275,12 @@ fun PresetCard(
                         imageVector = Icons.Default.CheckCircle,
                         contentDescription = null,
                         modifier = Modifier.size(18.dp),
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = Color.White
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = "Downloaded",
-                        color = MaterialTheme.colorScheme.primary,
+                        text = "Tersimpan",
+                        color = Color.White,
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -301,17 +301,31 @@ fun PresetCard(
                         fontWeight = FontWeight.SemiBold
                     )
                 } else {
-                    Icon(
-                        imageVector = Icons.Default.Download,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text(
-                        text = stringResource(R.string.download),
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.SemiBold
-                    )
+                    if (preset.price > 0L) {
+                        Icon(
+                            imageVector = Icons.Default.MonetizationOn,
+                            contentDescription = null,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "${preset.price} Koin",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.Download,
+                            contentDescription = null,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "Unduh (Gratis)",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
                 }
             }
         }

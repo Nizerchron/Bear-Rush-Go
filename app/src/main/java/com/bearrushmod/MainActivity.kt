@@ -17,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -51,15 +52,7 @@ class MainActivity : ComponentActivity() {
 
         val dataStoreManager = DataStoreManager(this)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.setDecorFitsSystemWindows(false)
-        } else {
-            @Suppress("DEPRECATION")
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-        }
+        hideSystemUI()
 
         window.statusBarColor = android.graphics.Color.TRANSPARENT
         window.navigationBarColor = android.graphics.Color.TRANSPARENT
@@ -130,35 +123,52 @@ class MainActivity : ComponentActivity() {
                 // ── Loading screen fullscreen gelap ──
                 if (isLoading) {
                     Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color(0xFF121212)),
-                        contentAlignment = Alignment.Center
+                        modifier = Modifier.fillMaxSize()
                     ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Image(
-                                painter = painterResource(id = R.drawable.bg_welcome_header),
-                                contentDescription = null,
-                                contentScale = ContentScale.FillWidth,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .aspectRatio(1440f / 667f)
-                            )
-                            Spacer(modifier = Modifier.height(24.dp))
+                        // Full Screen Image Cover
+                        Image(
+                            painter = painterResource(id = R.drawable.bear_splash),
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        
+                        // Bottom black gradient overlay
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(220.dp)
+                                .align(Alignment.BottomCenter)
+                                .background(
+                                    brush = Brush.verticalGradient(
+                                        colors = listOf(
+                                            Color.Transparent,
+                                            Color.Black.copy(alpha = 0.9f)
+                                        )
+                                    )
+                                )
+                        )
+                        
+                        // Bottom Loading Content
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(bottom = 48.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
                             Text(
-                                text = "Bear Rush Mod",
+                                text = "Memuat...",
                                 color = Color.White,
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleMedium
                             )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "Memuat preset...",
-                                color = Color.White.copy(alpha = 0.6f),
-                                fontSize = 14.sp
+                            Spacer(modifier = Modifier.height(12.dp))
+                            CircularProgressIndicator(
+                                color = Color(0xFFFF9800),
+                                modifier = Modifier.size(24.dp),
+                                strokeWidth = 3.dp
                             )
-                            Spacer(modifier = Modifier.height(24.dp))
-                            CircularProgressIndicator(color = Color(0xFFFF9800))
                         }
                     }
                 } else if (error != null) {
@@ -231,6 +241,31 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
+        }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            hideSystemUI()
+        }
+    }
+
+    private fun hideSystemUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+            window.insetsController?.let { controller ->
+                controller.hide(android.view.WindowInsets.Type.statusBars())
+                controller.systemBarsBehavior = android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        } else {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            )
         }
     }
 }

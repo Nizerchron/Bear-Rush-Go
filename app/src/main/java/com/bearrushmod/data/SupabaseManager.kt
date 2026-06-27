@@ -72,6 +72,11 @@ data class UserPresetLog(
 )
 
 @Serializable
+data class UserRelation(
+    val username: String
+)
+
+@Serializable
 data class PresetComment(
     val id: Long? = null,
     @SerialName("preset_id") val presetId: Long,
@@ -79,8 +84,12 @@ data class PresetComment(
     val username: String = "Guest",
     val comment: String,
     @SerialName("parent_comment_id") val parentCommentId: Long? = null,
-    @SerialName("created_at") val createdAt: String? = null
-)
+    @SerialName("created_at") val createdAt: String? = null,
+    val users: UserRelation? = null
+) {
+    val displayUsername: String
+        get() = users?.username ?: username
+}
 
 @Serializable
 data class CommentPresetId(
@@ -151,13 +160,15 @@ class SupabaseManager(
 
     suspend fun getProfile(
         userId: String,
-        token: String,
+        token: String? = null,
         email: String = "",
         username: String = ""
     ): UserProfile = withContext(Dispatchers.IO) {
         val response = client.get("$supabaseUrl/rest/v1/users?id=eq.$userId") {
             header("apikey", supabaseKey)
-            header("Authorization", "Bearer $token")
+            if (!token.isNullOrEmpty()) {
+                header("Authorization", "Bearer $token")
+            }
         }
         if (!response.status.isSuccess()) {
             throw Exception("Gagal mengambil profil: ${response.bodyAsText()}")
@@ -168,7 +179,9 @@ class SupabaseManager(
             val createResponse = client.post("$supabaseUrl/rest/v1/users") {
                 contentType(ContentType.Application.Json)
                 header("apikey", supabaseKey)
-                header("Authorization", "Bearer $token")
+                if (!token.isNullOrEmpty()) {
+                    header("Authorization", "Bearer $token")
+                }
                 header("Prefer", "return=representation")
                 setBody(UserCreateRequest(
                     id = userId,
@@ -197,11 +210,40 @@ class SupabaseManager(
             header("apikey", supabaseKey)
             header("Authorization", "Bearer $token")
             header("Prefer", "return=representation")
-            setBody(mapOf("username" to username, "bio" to bio, "avatar_url" to avatarUrl))
+            setBody(mapOf(
+                "username" to username,
+                "nickname" to username,
+                "bio" to bio,
+                "avatar_url" to avatarUrl
+            ))
         }
         if (!response.status.isSuccess()) {
             throw Exception("Gagal mengupdate profil: ${response.bodyAsText()}")
         }
+
+        // Update username & nickname in previous comments posted by this user
+        try {
+            client.patch("$supabaseUrl/rest/v1/preset_comments?user_id=eq.$userId") {
+                contentType(ContentType.Application.Json)
+                header("apikey", supabaseKey)
+                header("Authorization", "Bearer $token")
+                setBody(mapOf(
+                    "username" to username,
+                    "nickname" to username
+                ))
+            }
+        } catch (_: Exception) {
+            // If nickname doesn't exist in preset_comments table, update just username
+            try {
+                client.patch("$supabaseUrl/rest/v1/preset_comments?user_id=eq.$userId") {
+                    contentType(ContentType.Application.Json)
+                    header("apikey", supabaseKey)
+                    header("Authorization", "Bearer $token")
+                    setBody(mapOf("username" to username))
+                }
+            } catch (_: Exception) {}
+        }
+
         val list: List<UserProfile> = response.body()
         list.first()
     }
@@ -226,6 +268,7 @@ class SupabaseManager(
             contentType(ContentType.Application.Json)
             header("apikey", supabaseKey)
             header("Authorization", "Bearer $token")
+            header("Prefer", "resolution=ignore-duplicates")
             setBody(log)
         }
         if (!response.status.isSuccess()) {
@@ -244,14 +287,45 @@ class SupabaseManager(
         response.body()
     }
 
-    suspend fun getComments(presetId: Long): List<PresetComment> = withContext(Dispatchers.IO) {
+    suspend fun getComments(presetId: Long, token: String? = null): List<PresetComment> = withContext(Dispatchers.IO) {
         val response = client.get("$supabaseUrl/rest/v1/preset_comments?preset_id=eq.$presetId&order=created_at.desc") {
             header("apikey", supabaseKey)
         }
         if (!response.status.isSuccess()) {
             return@withContext emptyList()
         }
-        response.body()
+        val rawComments: List<PresetComment> = response.body()
+        if (rawComments.isEmpty()) {
+            return@withContext emptyList()
+        }
+
+        val userIds = rawComments.mapNotNull { it.userId }.filter { it.isNotEmpty() }.distinct()
+        if (userIds.isEmpty()) {
+            return@withContext rawComments
+        }
+
+        try {
+            val usersResponse = client.get("$supabaseUrl/rest/v1/users?id=in.(${userIds.joinToString(",")})") {
+                header("apikey", supabaseKey)
+                if (token != null) {
+                    header("Authorization", "Bearer $token")
+                }
+            }
+            if (usersResponse.status.isSuccess()) {
+                val profiles: List<UserProfile> = usersResponse.body()
+                val profilesMap = profiles.associateBy { it.id }
+                return@withContext rawComments.map { comment ->
+                    val matchedProfile = profilesMap[comment.userId]
+                    if (matchedProfile != null) {
+                        comment.copy(users = UserRelation(username = matchedProfile.username))
+                    } else {
+                        comment
+                    }
+                }
+            }
+        } catch (_: Exception) {}
+
+        rawComments
     }
 
     suspend fun getAllCommentsCountMap(): Map<Long, Int> = withContext(Dispatchers.IO) {
@@ -318,4 +392,62 @@ class SupabaseManager(
             throw Exception("Gagal mengupdate downloads: ${response.bodyAsText()}")
         }
     }
+
+    suspend fun followUser(followerId: String, followingId: String, token: String) = withContext(Dispatchers.IO) {
+        val response = client.post("$supabaseUrl/rest/v1/follows") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            header("Authorization", "Bearer $token")
+            setBody(FollowRecord(followerId = followerId, followingId = followingId))
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal mengikuti pengguna: ${response.bodyAsText()}")
+        }
+    }
+
+    suspend fun unfollowUser(followerId: String, followingId: String, token: String) = withContext(Dispatchers.IO) {
+        val response = client.delete("$supabaseUrl/rest/v1/follows?follower_id=eq.$followerId&following_id=eq.$followingId") {
+            header("apikey", supabaseKey)
+            header("Authorization", "Bearer $token")
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal berhenti mengikuti: ${response.bodyAsText()}")
+        }
+    }
+
+    suspend fun isFollowing(followerId: String, followingId: String, token: String): Boolean = withContext(Dispatchers.IO) {
+        val response = client.get("$supabaseUrl/rest/v1/follows?follower_id=eq.$followerId&following_id=eq.$followingId") {
+            header("apikey", supabaseKey)
+            header("Authorization", "Bearer $token")
+        }
+        if (!response.status.isSuccess()) {
+            return@withContext false
+        }
+        val list: List<FollowRecord> = response.body()
+        list.isNotEmpty()
+    }
+
+    suspend fun getFollowStats(userId: String, token: String): Pair<Int, Int> = withContext(Dispatchers.IO) {
+        val followersResp = client.get("$supabaseUrl/rest/v1/follows?following_id=eq.$userId") {
+            header("apikey", supabaseKey)
+            header("Authorization", "Bearer $token")
+        }
+        val followersList: List<FollowRecord> = if (followersResp.status.isSuccess()) followersResp.body() else emptyList()
+
+        val followingResp = client.get("$supabaseUrl/rest/v1/follows?follower_id=eq.$userId") {
+            header("apikey", supabaseKey)
+            header("Authorization", "Bearer $token")
+        }
+        val followingList: List<FollowRecord> = if (followingResp.status.isSuccess()) followingResp.body() else emptyList()
+
+        Pair(followersList.size, followingList.size)
+    }
 }
+
+@Serializable
+data class FollowRecord(
+    val id: Long? = null,
+    @SerialName("follower_id") val followerId: String,
+    @SerialName("following_id") val followingId: String
+)
+

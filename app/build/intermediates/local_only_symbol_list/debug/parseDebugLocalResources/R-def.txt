@@ -1,11 +1,14 @@
 R_DEF: Internal format may change without notice
 local
+drawable bear_coin_keeper
 drawable bear_default
 drawable bear_oppo
 drawable bear_realme
 drawable bear_samsung
+drawable bear_splash
 drawable bear_xiaomi
 drawable bg_welcome_header
+drawable gaming_pattern_bg
 drawable geokar
 mipmap ic_launcher
 mipmap ic_launcher_background

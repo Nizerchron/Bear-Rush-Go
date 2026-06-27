@@ -93,10 +93,12 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 drawable abc_vector_test
+drawable bear_coin_keeper
 drawable bear_default
 drawable bear_oppo
 drawable bear_realme
 drawable bear_samsung
+drawable bear_splash
 drawable bear_xiaomi
 drawable bg_welcome_header
 drawable common_full_open_on_phone
@@ -118,6 +120,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable gaming_pattern_bg
 drawable geokar
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
