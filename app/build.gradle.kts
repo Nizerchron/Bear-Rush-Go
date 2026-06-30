@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,16 +8,24 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.inputStream().use { load(it) }
+    }
+}
+val githubTokenValue = localProperties.getProperty("github.token") ?: "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+
 android {
-    namespace = "com.bearrushmod"
+    namespace = "com.bearrushbuilder.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.bearrushmod"
-        minSdk = 24
+        applicationId = "com.bearrushbuilder.app"
+        minSdk = 21
         targetSdk = 35
-        versionCode = 12
-        versionName = "1.1.2"
+        versionCode = 27
+        versionName = "1.2.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -27,10 +38,23 @@ android {
         buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"735712091358-6kchjv1evnda339ndrnbk6gqn4f5c450.apps.googleusercontent.com\"")
         buildConfigField("int", "VERSION_CODE", "1")
         buildConfigField("String", "VERSION_NAME", "\"1.0.0\"")
+        buildConfigField("String", "GITHUB_TOKEN", "\"$githubTokenValue\"")
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("F:/CompileAPK/Key/Nizerkey.jks")
+            storePassword = "_synchront_"
+            keyAlias = "nizerkey"
+            keyPassword = "_synchront_"
+            // ponytail: password hardcoded karena local build only, bukan repo publik.
+            // Upgrade: pindah ke local.properties atau env var sebelum open-source.
+        }
     }
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -39,6 +63,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -54,11 +79,27 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    applicationVariants.all {
+        val variant = this
+        variant.outputs.all {
+            val output = this as com.android.build.gradle.internal.api.ApkVariantOutputImpl
+            val baseName = "BRG-v${variant.versionName}"
+            val buildType = variant.buildType.name
+            output.outputFileName = if (buildType == "release") {
+                "$baseName.apk"
+            } else {
+                "$baseName-$buildType.apk"
+            }
+        }
+    }
 }
 
 dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("com.startapp:inapp-sdk:5.1.0")
+    // Google Mobile Ads (AdMob)
+    implementation("com.google.android.gms:play-services-ads:23.6.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.ktor:ktor-client-android:3.0.2")
     implementation("io.ktor:ktor-client-content-negotiation:3.0.2")
@@ -82,5 +123,13 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-}
 
+    // Google Play Billing Library
+    implementation("com.android.billingclient:billing-ktx:7.1.1")
+
+    // Google Play In-App Updates
+    implementation("com.google.android.play:app-update:2.1.0")
+
+    // Android Jetpack WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
+}

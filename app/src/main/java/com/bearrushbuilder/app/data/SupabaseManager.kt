@@ -618,7 +618,7 @@ class SupabaseManager(
     }
 
     companion object {
-        const val GITHUB_TOKEN = "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+        val GITHUB_TOKEN = BuildConfig.GITHUB_TOKEN
     }
 }
 
