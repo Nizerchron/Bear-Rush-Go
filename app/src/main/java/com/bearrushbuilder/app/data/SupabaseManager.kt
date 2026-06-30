@@ -586,6 +586,49 @@ class SupabaseManager(
         }
     }
 
+    suspend fun updatePreset(
+        presetId: Long,
+        preset: PresetInsertRequest,
+        token: String? = null
+    ): Unit = withContext(Dispatchers.IO) {
+        val response = client.patch("$supabaseUrl/rest/v1/presets?id=eq.$presetId") {
+            contentType(ContentType.Application.Json)
+            header("apikey", supabaseKey)
+            if (!token.isNullOrEmpty()) {
+                header("Authorization", "Bearer $token")
+            }
+            setBody(preset)
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal memperbarui preset di database: ${response.bodyAsText()}")
+        }
+    }
+
+
+    suspend fun getFileSHA(
+        path: String,
+        gitHubToken: String
+    ): String? = withContext(Dispatchers.IO) {
+        val repoOwner = "Nizerchron"
+        val repoName = "Bear-Rush-Go"
+        val url = "https://api.github.com/repos/$repoOwner/$repoName/contents/$path"
+
+        try {
+            val response = client.get(url) {
+                header("Accept", "application/vnd.github+json")
+                header("Authorization", "Bearer $gitHubToken")
+                header("X-GitHub-Api-Version", "2022-11-28")
+            }
+            if (response.status.value == 200) {
+                @Serializable
+                data class GitHubContentInfo(val sha: String)
+                val info: GitHubContentInfo = response.body()
+                return@withContext info.sha
+            }
+        } catch (_: Exception) {}
+        null
+    }
+
     suspend fun uploadToGitHub(
         path: String,
         bytes: ByteArray,
@@ -595,11 +638,14 @@ class SupabaseManager(
         val repoName = "Bear-Rush-Go"
         val url = "https://api.github.com/repos/$repoOwner/$repoName/contents/$path"
 
+        val sha = getFileSHA(path, gitHubToken)
+
         val base64Content = android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP)
 
         val requestBody = GitHubPutRequest(
-            message = "Upload $path via Bear Rush Builder",
-            content = base64Content
+            message = "Upload/Replace $path via Bear Rush Builder",
+            content = base64Content,
+            sha = sha
         )
 
         val response = client.put(url) {
@@ -615,6 +661,49 @@ class SupabaseManager(
         }
 
         "https://raw.githubusercontent.com/$repoOwner/$repoName/main/$path"
+    }
+
+    suspend fun deleteFromGitHub(
+        path: String,
+        gitHubToken: String
+    ): Unit = withContext(Dispatchers.IO) {
+        val sha = getFileSHA(path, gitHubToken) ?: return@withContext
+
+        val repoOwner = "Nizerchron"
+        val repoName = "Bear-Rush-Go"
+        val url = "https://api.github.com/repos/$repoOwner/$repoName/contents/$path"
+
+        val requestBody = GitHubDeleteRequest(
+            message = "Delete $path via Bear Rush Builder",
+            sha = sha
+        )
+
+        val response = client.delete(url) {
+            header("Accept", "application/vnd.github+json")
+            header("Authorization", "Bearer $gitHubToken")
+            header("X-GitHub-Api-Version", "2022-11-28")
+            contentType(ContentType.Application.Json)
+            setBody(requestBody)
+        }
+
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal menghapus berkas di GitHub ($path): ${response.bodyAsText()}")
+        }
+    }
+
+    suspend fun deletePreset(
+        presetId: Long,
+        token: String? = null
+    ): Unit = withContext(Dispatchers.IO) {
+        val response = client.delete("$supabaseUrl/rest/v1/presets?id=eq.$presetId") {
+            header("apikey", supabaseKey)
+            if (!token.isNullOrEmpty()) {
+                header("Authorization", "Bearer $token")
+            }
+        }
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal menghapus preset di database: ${response.bodyAsText()}")
+        }
     }
 
     companion object {
@@ -649,6 +738,14 @@ data class PresetInsertRequest(
 data class GitHubPutRequest(
     val message: String,
     val content: String,
+    val sha: String? = null,
+    val branch: String = "main"
+)
+
+@Serializable
+data class GitHubDeleteRequest(
+    val message: String,
+    val sha: String,
     val branch: String = "main"
 )
 

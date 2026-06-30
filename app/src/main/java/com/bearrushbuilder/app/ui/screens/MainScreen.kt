@@ -12,6 +12,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.verticalScroll
@@ -131,6 +133,7 @@ fun MainScreen(
     val scope = rememberCoroutineScope()
     var currentTab by remember { mutableStateOf(ScreenTab.CATALOG) }
     var showCreatorUploadScreen by remember { mutableStateOf(false) }
+    var presetToUpdate by remember { mutableStateOf<Preset?>(null) }
 
     // Supabase Auth and User States
     val session by dataStoreManager.userSession.collectAsState(initial = null)
@@ -473,7 +476,8 @@ fun MainScreen(
             confirmDownloadPreset = { handleDownloadClick(it) },
             presetsCatalog = presets,
             onPresetClick = { detailPreset = it },
-            onNavigateToProfile = { detailPreset = null; currentTab = ScreenTab.PROFILE }
+            onNavigateToProfile = { detailPreset = null; currentTab = ScreenTab.PROFILE },
+            onRefreshCatalog = onRefresh
         )
     } else if (showSettingsScreen) {
         BackHandler(onBack = { showSettingsScreen = false })
@@ -573,7 +577,9 @@ fun MainScreen(
                         onPresetClick = { preset -> detailPreset = preset },
                         downloadManager = downloadManager,
                         onNavigateToSettings = { showSettingsScreen = true },
-                        onCreatorClick = { showCreatorUploadScreen = true }
+                        onCreatorClick = { showCreatorUploadScreen = true },
+                        onRefreshCatalog = onRefresh,
+                        onUpdateClick = { presetToUpdate = it }
                     )
                 }
             }
@@ -691,14 +697,26 @@ fun MainScreen(
         )
     }
 
-    if (showCreatorUploadScreen) {
-        BackHandler(onBack = { showCreatorUploadScreen = false })
+    if (showCreatorUploadScreen || presetToUpdate != null) {
+        BackHandler(onBack = { 
+            showCreatorUploadScreen = false
+            presetToUpdate = null
+        })
         CreatorUploadScreen(
             currentUserId = session?.userId ?: "",
             token = session?.accessToken ?: "",
             username = profile?.username ?: session?.username ?: "",
             supabaseManager = supabaseManager,
-            onBack = { showCreatorUploadScreen = false }
+            onBack = { 
+                showCreatorUploadScreen = false
+                presetToUpdate = null
+            },
+            onUploadSuccess = {
+                showCreatorUploadScreen = false
+                presetToUpdate = null
+                onRefresh()
+            },
+            presetToUpdate = presetToUpdate
         )
     }
 
@@ -1860,7 +1878,7 @@ fun containsBadWords(text: String): Boolean {
     return false
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ProfileTab(
     session: UserSession?,
@@ -1874,7 +1892,9 @@ fun ProfileTab(
     onPresetClick: (Preset) -> Unit,
     downloadManager: DownloadManager?,
     onNavigateToSettings: () -> Unit,
-    onCreatorClick: () -> Unit
+    onCreatorClick: () -> Unit,
+    onRefreshCatalog: () -> Unit = {},
+    onUpdateClick: (Preset) -> Unit = {}
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -1887,6 +1907,9 @@ fun ProfileTab(
     var isAuthLoading by remember { mutableStateOf(false) }
 
     var showEditProfileDialog by remember { mutableStateOf(false) }
+    var selectedPresetForOptions by remember { mutableStateOf<Preset?>(null) }
+    var showDeleteConfirmDialog by remember { mutableStateOf<Preset?>(null) }
+    var isDeletingPreset by remember { mutableStateOf(false) }
 
     var ownFollowStats by remember { mutableStateOf<Pair<Int, Int>>(0 to 0) }
 
@@ -2648,7 +2671,14 @@ fun ProfileTab(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { onPresetClick(preset) }
+                                .combinedClickable(
+                                    onClick = { onPresetClick(preset) },
+                                    onLongClick = {
+                                        if (activeTab == 0) {
+                                            selectedPresetForOptions = preset
+                                        }
+                                    }
+                                )
                                 .padding(8.dp)
                         ) {
                             // Rounded Preview Box
@@ -3066,6 +3096,113 @@ fun ProfileTab(
             }
         }
     }
+
+    if (selectedPresetForOptions != null) {
+        val preset = selectedPresetForOptions!!
+        AlertDialog(
+            onDismissRequest = { selectedPresetForOptions = null },
+            title = { Text(preset.name, color = Color.White, fontWeight = FontWeight.Bold) },
+            text = { Text("Pilih tindakan yang ingin Anda lakukan untuk preset ini:", color = Color.LightGray) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        selectedPresetForOptions = null
+                        onUpdateClick(preset)
+                    }
+                ) {
+                    Text("Perbarui (Update)", color = Color(0xFFFF9800))
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        selectedPresetForOptions = null
+                        showDeleteConfirmDialog = preset
+                    }
+                ) {
+                    Text("Hapus", color = Color.Red)
+                }
+            },
+            containerColor = Color(0xFF1E1E1E),
+            titleContentColor = Color.White,
+            textContentColor = Color.LightGray
+        )
+    }
+
+    if (showDeleteConfirmDialog != null) {
+        val preset = showDeleteConfirmDialog!!
+        AlertDialog(
+            onDismissRequest = { if (!isDeletingPreset) showDeleteConfirmDialog = null },
+            title = { Text("Hapus Preset Permanen?", color = Color.White, fontWeight = FontWeight.Bold) },
+            text = { 
+                Text(
+                    text = "Tindakan ini akan menghapus preset \"${preset.name}\" secara permanen dari database Supabase dan menghapus berkasnya di GitHub. Tindakan ini tidak dapat dibatalkan.", 
+                    color = Color.LightGray
+                ) 
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        isDeletingPreset = true
+                        scope.launch {
+                            try {
+                                val token = session?.accessToken
+                                val gitHubToken = SupabaseManager.GITHUB_TOKEN
+
+                                // 1. Delete preset file from GitHub
+                                try {
+                                    val presetPath = getRelativeGitHubPath(preset.download_url)
+                                    supabaseManager.deleteFromGitHub(presetPath, gitHubToken)
+                                } catch (_: Exception) {}
+
+                                // 2. Delete previews from GitHub
+                                preset.preview_url.split(",").forEach { url ->
+                                    val trimmedUrl = url.trim()
+                                    if (trimmedUrl.isNotEmpty()) {
+                                        try {
+                                            val imgPath = getRelativeGitHubPath(trimmedUrl)
+                                            supabaseManager.deleteFromGitHub(imgPath, gitHubToken)
+                                        } catch (_: Exception) {}
+                                    }
+                                }
+
+                                // 3. Delete from Supabase
+                                supabaseManager.deletePreset(preset.id, token)
+
+                                Toast.makeText(context, "Preset berhasil dihapus total!", Toast.LENGTH_SHORT).show()
+                                showDeleteConfirmDialog = null
+                                onRefreshProfile()
+                                onRefreshCatalog()
+                            } catch (e: Exception) {
+                                Toast.makeText(context, "Gagal menghapus: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                            } finally {
+                                isDeletingPreset = false
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
+                    enabled = !isDeletingPreset
+                ) {
+                    if (isDeletingPreset) {
+                        CircularProgressIndicator(color = Color.White, modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+                    } else {
+                        Text("Ya, Hapus", color = Color.White)
+                    }
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { showDeleteConfirmDialog = null },
+                    enabled = !isDeletingPreset
+                ) {
+                    Text("Batal", color = Color.Gray)
+                }
+            },
+            containerColor = Color(0xFF1E1E1E),
+            titleContentColor = Color.White,
+            textContentColor = Color.LightGray
+        )
+    }
 }
 
 // ── helper Composables ──
@@ -3325,7 +3462,8 @@ fun PresetDetailScreen(
     confirmDownloadPreset: (Preset) -> Unit,
     presetsCatalog: List<Preset>,
     onPresetClick: (Preset) -> Unit,
-    onNavigateToProfile: () -> Unit
+    onNavigateToProfile: () -> Unit,
+    onRefreshCatalog: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -3339,6 +3477,7 @@ fun PresetDetailScreen(
     var isLoved by remember(preset) { mutableStateOf(false) }
     var viewProfileUserId by remember { mutableStateOf<String?>(null) }
     var showCreatorUploadScreen by remember { mutableStateOf(false) }
+    var presetToUpdate by remember { mutableStateOf<Preset?>(null) }
 
     var showDoubleTapHeart by remember { mutableStateOf(false) }
     val floatingHearts = remember { mutableStateListOf<FloatingHeart>() }
@@ -4031,14 +4170,26 @@ fun PresetDetailScreen(
         )
     }
 
-    if (showCreatorUploadScreen) {
-        BackHandler(onBack = { showCreatorUploadScreen = false })
+    if (showCreatorUploadScreen || presetToUpdate != null) {
+        BackHandler(onBack = { 
+            showCreatorUploadScreen = false
+            presetToUpdate = null
+        })
         CreatorUploadScreen(
             currentUserId = session?.userId ?: "",
             token = session?.accessToken ?: "",
             username = profile?.username ?: session?.username ?: "",
             supabaseManager = supabaseManager,
-            onBack = { showCreatorUploadScreen = false }
+            onBack = { 
+                showCreatorUploadScreen = false
+                presetToUpdate = null
+            },
+            onUploadSuccess = {
+                showCreatorUploadScreen = false
+                presetToUpdate = null
+                onRefreshCatalog()
+            },
+            presetToUpdate = presetToUpdate
         )
     }
 }
@@ -5033,17 +5184,19 @@ fun CreatorUploadScreen(
     token: String,
     username: String,
     supabaseManager: SupabaseManager,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onUploadSuccess: () -> Unit = {},
+    presetToUpdate: Preset? = null
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
-    var name by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
-    var selectedCategory by remember { mutableStateOf("Nature") }
-    var isFree by remember { mutableStateOf(true) }
-    var priceString by remember { mutableStateOf("0") }
-    var youtubeUrl by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf(presetToUpdate?.name ?: "") }
+    var description by remember { mutableStateOf(presetToUpdate?.description ?: "") }
+    var selectedCategory by remember { mutableStateOf(presetToUpdate?.category ?: "Nature") }
+    var isFree by remember { mutableStateOf(presetToUpdate?.is_free ?: true) }
+    var priceString by remember { mutableStateOf(presetToUpdate?.price?.toString() ?: "0") }
+    var youtubeUrl by remember { mutableStateOf(presetToUpdate?.youtube_url ?: "") }
 
     var selectedFileUri by remember { mutableStateOf<Uri?>(null) }
     var selectedFileName by remember { mutableStateOf("") }
@@ -5162,13 +5315,13 @@ fun CreatorUploadScreen(
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {
                     Text(
-                        text = "Unggah Preset Baru",
+                        text = if (presetToUpdate != null) "Perbarui Preset" else "Unggah Preset Baru",
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
                         color = Color.White
                     )
                     Text(
-                        text = "Bagikan preset kreasi terbaikmu",
+                        text = if (presetToUpdate != null) "Perbarui detail preset karyamu" else "Bagikan preset kreasi terbaikmu",
                         fontSize = 12.sp,
                         color = Color.LightGray
                     )
@@ -5223,16 +5376,31 @@ fun CreatorUploadScreen(
                                     color = Color.LightGray
                                 )
                             } else {
-                                Text(
-                                    text = "Pilih berkas preset (.bin)",
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = Color.White
-                                )
-                                Text(
-                                    text = "Format file bin builder Bear Rush",
-                                    fontSize = 12.sp,
-                                    color = Color.Gray
-                                )
+                                if (presetToUpdate != null) {
+                                    Text(
+                                        text = presetToUpdate.download_url.substringAfterLast("/").replace("%20", " "),
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        text = "Berkas saat ini (Ketuk untuk mengganti)",
+                                        fontSize = 12.sp,
+                                        color = Color(0xFFFF9800)
+                                    )
+                                } else {
+                                    Text(
+                                        text = "Pilih berkas preset (.bin)",
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = "Format file bin builder Bear Rush",
+                                        fontSize = 12.sp,
+                                        color = Color.Gray
+                                    )
+                                }
                             }
                         }
                         if (selectedFileUri != null) {
@@ -5328,6 +5496,69 @@ fun CreatorUploadScreen(
                                 }
                             }
                         }
+                    } else if (presetToUpdate != null && presetToUpdate.preview_url.isNotEmpty()) {
+                        val currentUrls = remember(presetToUpdate.preview_url) {
+                            presetToUpdate.preview_url.split(",")
+                        }
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            LazyRow(
+                                modifier = Modifier.fillMaxSize().padding(8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                items(currentUrls) { url ->
+                                    Surface(
+                                        shape = RoundedCornerShape(8.dp),
+                                        modifier = Modifier
+                                            .fillMaxHeight()
+                                            .aspectRatio(16f / 9f)
+                                    ) {
+                                        AsyncImage(
+                                            model = url.trim(),
+                                            contentDescription = "Current Preview",
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier.fillMaxSize()
+                                        )
+                                    }
+                                }
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.verticalGradient(
+                                            colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.5f))
+                                        )
+                                    )
+                            )
+                            Row(
+                                modifier = Modifier
+                                    .align(Alignment.BottomEnd)
+                                    .padding(8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.CheckCircle,
+                                    contentDescription = null,
+                                    tint = Color(0xFF4CAF50),
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = "Gambar saat ini: ${currentUrls.size}",
+                                    color = Color.White,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                TextButton(
+                                    onClick = { imagePickerLauncher.launch("image/*") },
+                                    colors = ButtonDefaults.textButtonColors(contentColor = Color.White)
+                                ) {
+                                    Text("Ganti Baru", color = Color(0xFFFF9800), fontSize = 11.sp)
+                                }
+                            }
+                        }
                     } else {
                         Column(
                             modifier = Modifier.fillMaxSize(),
@@ -5348,7 +5579,7 @@ fun CreatorUploadScreen(
                                 fontSize = 13.sp
                             )
                             Text(
-                                text = "Gunakan aspek rasio 16:9 (Landscape) agar maksimal",
+                                text = "Pilih minimal 3 gambar (rasio 16:9)",
                                 fontSize = 11.sp,
                                 color = Color.Gray
                             )
@@ -5515,44 +5746,65 @@ fun CreatorUploadScreen(
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
+            val isFormValid = remember(name, description, selectedFileUri, selectedImageUris, presetToUpdate) {
+                name.isNotBlank() && description.isNotBlank() && (
+                    presetToUpdate != null || (selectedFileUri != null && selectedImageUris.size >= 3)
+                ) && (selectedImageUris.isEmpty() || selectedImageUris.size >= 3)
+            }
+
             Button(
                 onClick = {
-                    val fileUri = selectedFileUri
-                    if (name.isBlank() || description.isBlank() || fileUri == null || selectedImageUris.size < 3) {
-                        Toast.makeText(context, "Harap lengkapi semua data wajib!", Toast.LENGTH_SHORT).show()
+                    if (name.isBlank() || description.isBlank()) {
+                        Toast.makeText(context, "Nama dan deskripsi tidak boleh kosong!", Toast.LENGTH_SHORT).show()
                         return@Button
                     }
+                    if (presetToUpdate == null && (selectedFileUri == null || selectedImageUris.size < 3)) {
+                        Toast.makeText(context, "Harap lengkapi berkas preset dan minimal 3 pratinjau!", Toast.LENGTH_SHORT).show()
+                        return@Button
+                    }
+                    if (selectedImageUris.isNotEmpty() && selectedImageUris.size < 3) {
+                        Toast.makeText(context, "Jika mengganti pratinjau, Anda harus memilih minimal 3 gambar!", Toast.LENGTH_SHORT).show()
+                        return@Button
+                    }
+
                     scope.launch {
                         isUploading = true
                         try {
-                            val fileBytes = getBytesFromUri(context, fileUri)
-                                ?: throw Exception("Gagal membaca file preset")
-
                             val cleanPresetName = name.trim().lowercase().replace(Regex("[^a-zA-Z0-9]+"), "_")
 
-                            // Upload preset file (.bin) to superbear/bins/
-                            val downloadUrl = supabaseManager.uploadToGitHub(
-                                path = "superbear/bins/${name}.bin",
-                                bytes = fileBytes,
-                                gitHubToken = SupabaseManager.GITHUB_TOKEN
-                            )
-
-                            // Upload preview images to superbear/
-                            val previewUrls = selectedImageUris.mapIndexed { index, imgUri ->
-                                val imgBytes = getBytesFromUri(context, imgUri)
-                                    ?: throw Exception("Gagal membaca gambar pratinjau ke-${index + 1}")
-                                val imgExt = context.contentResolver.getType(imgUri)?.substringAfterLast('/') ?: "jpg"
-                                val remoteImagePath = "superbear/pre_${cleanPresetName}_${index + 1}.${imgExt}"
-
+                            // 1. Upload or reuse preset file (.bin)
+                            val downloadUrl = if (selectedFileUri != null) {
+                                val fileBytes = getBytesFromUri(context, selectedFileUri!!)
+                                    ?: throw Exception("Gagal membaca file preset")
                                 supabaseManager.uploadToGitHub(
-                                    path = remoteImagePath,
-                                    bytes = imgBytes,
+                                    path = "superbear/bins/${name}.bin",
+                                    bytes = fileBytes,
                                     gitHubToken = SupabaseManager.GITHUB_TOKEN
                                 )
+                            } else {
+                                presetToUpdate?.download_url ?: ""
                             }
-                            val previewUrlString = previewUrls.joinToString(",")
 
-                            // Insert Preset into Database Table
+                            // 2. Upload or reuse preview images
+                            val previewUrlString = if (selectedImageUris.isNotEmpty()) {
+                                val previewUrls = selectedImageUris.mapIndexed { index, imgUri ->
+                                    val imgBytes = getBytesFromUri(context, imgUri)
+                                        ?: throw Exception("Gagal membaca gambar pratinjau ke-${index + 1}")
+                                    val imgExt = context.contentResolver.getType(imgUri)?.substringAfterLast('/') ?: "jpg"
+                                    val remoteImagePath = "superbear/pre_${cleanPresetName}_${index + 1}.${imgExt}"
+
+                                    supabaseManager.uploadToGitHub(
+                                        path = remoteImagePath,
+                                        bytes = imgBytes,
+                                        gitHubToken = SupabaseManager.GITHUB_TOKEN
+                                    )
+                                }
+                                previewUrls.joinToString(",")
+                            } else {
+                                presetToUpdate?.preview_url ?: ""
+                            }
+
+                            // 3. Build insert request payload
                             val insertRequest = com.bearrushbuilder.app.data.PresetInsertRequest(
                                 name = name,
                                 description = description,
@@ -5564,18 +5816,25 @@ fun CreatorUploadScreen(
                                 author = username,
                                 youtubeUrl = youtubeUrl
                             )
-                            supabaseManager.insertPreset(insertRequest, token)
 
-                            Toast.makeText(context, "Preset berhasil diunggah!", Toast.LENGTH_SHORT).show()
+                            if (presetToUpdate != null) {
+                                supabaseManager.updatePreset(presetToUpdate.id, insertRequest, token)
+                                Toast.makeText(context, "Preset berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                supabaseManager.insertPreset(insertRequest, token)
+                                Toast.makeText(context, "Preset berhasil diunggah!", Toast.LENGTH_SHORT).show()
+                            }
+
+                            onUploadSuccess()
                             onBack()
                         } catch (e: Exception) {
-                            Toast.makeText(context, "Gagal mengunggah: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Gagal memproses: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
                         } finally {
                             isUploading = false
                         }
                     }
                 },
-                enabled = !isUploading && name.isNotBlank() && description.isNotBlank() && selectedFileUri != null && selectedImageUris.size >= 3,
+                enabled = !isUploading && isFormValid,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFFF9800),
                     disabledContainerColor = Color(0xFFFF9800).copy(alpha = 0.5f)
@@ -5594,7 +5853,7 @@ fun CreatorUploadScreen(
                     )
                 } else {
                     Text(
-                        text = "Unggah Preset",
+                        text = if (presetToUpdate != null) "Simpan Perubahan" else "Unggah Preset",
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp
@@ -5628,5 +5887,14 @@ fun getBytesFromUri(context: android.content.Context, uri: Uri): ByteArray? {
         }
     } catch (e: Exception) {
         null
+    }
+}
+
+fun getRelativeGitHubPath(url: String): String {
+    val prefix = "https://raw.githubusercontent.com/Nizerchron/Bear-Rush-Go/main/"
+    return if (url.startsWith(prefix)) {
+        url.removePrefix(prefix).replace("%20", " ")
+    } else {
+        url.substringAfter("/main/").replace("%20", " ")
     }
 }
