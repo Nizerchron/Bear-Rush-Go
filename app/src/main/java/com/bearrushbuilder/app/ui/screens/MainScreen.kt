@@ -5054,14 +5054,29 @@ fun CreatorUploadScreen(
     var isUploading by remember { mutableStateOf(false) }
 
     val filePickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            selectedFileUri = uri
-            val (fName, fSize) = getFileNameAndSize(context, uri)
-            selectedFileName = fName
-            selectedFileSize = fSize
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            val uri = result.data?.data
+            if (uri != null) {
+                selectedFileUri = uri
+                val (fName, fSize) = getFileNameAndSize(context, uri)
+                selectedFileName = fName
+                selectedFileSize = fSize
+            }
         }
+    }
+
+    val launchFilePicker = {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            try {
+                val initialUri = Uri.parse("content://com.android.externalstorage.documents/document/primary%3AGeokar_Mods%2FSBA%2Fsaved_scenes")
+                putExtra("android.provider.extra.INITIAL_URI", initialUri)
+            } catch (_: Exception) {}
+        }
+        filePickerLauncher.launch(intent)
     }
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
@@ -5176,7 +5191,7 @@ fun CreatorUploadScreen(
                 )
 
                 Surface(
-                    onClick = { filePickerLauncher.launch("*/*") },
+                    onClick = { launchFilePicker() },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
                     color = Color(0xFF1E1E1E),
@@ -5222,7 +5237,7 @@ fun CreatorUploadScreen(
                         }
                         if (selectedFileUri != null) {
                             TextButton(
-                                onClick = { filePickerLauncher.launch("*/*") }
+                                onClick = { launchFilePicker() }
                             ) {
                                 Text("Ganti", color = Color(0xFFFF9800))
                             }
