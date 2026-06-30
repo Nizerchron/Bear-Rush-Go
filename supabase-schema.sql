@@ -20,7 +20,12 @@ ALTER TABLE presets ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Presets are viewable by everyone" ON presets FOR SELECT USING (true);
 CREATE POLICY "Anyone can update preset stats" ON presets FOR UPDATE USING (true) WITH CHECK (true);
-
+CREATE POLICY "Authenticated users can insert presets" ON presets FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Users can delete own presets" ON presets FOR DELETE TO authenticated USING (
+  author = (SELECT nickname FROM users WHERE id = auth.uid()) OR
+  author = (SELECT username FROM users WHERE id = auth.uid()) OR
+  author = (SELECT REPLACE(username, '@', '') FROM users WHERE id = auth.uid())
+);
 
 CREATE INDEX IF NOT EXISTS idx_presets_created_at ON presets(created_at DESC);
 
