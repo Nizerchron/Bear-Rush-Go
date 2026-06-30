@@ -3136,7 +3136,7 @@ fun ProfileTab(
             title = { Text("Hapus Preset Permanen?", color = Color.White, fontWeight = FontWeight.Bold) },
             text = { 
                 Text(
-                    text = "Tindakan ini akan menghapus preset \"${preset.name}\" secara permanen dari database Supabase dan menghapus berkasnya di GitHub. Tindakan ini tidak dapat dibatalkan.", 
+                    text = "Tindakan ini akan menghapus preset \"${preset.name}\" secara permanen. Tindakan ini tidak dapat dibatalkan.", 
                     color = Color.LightGray
                 ) 
             },
