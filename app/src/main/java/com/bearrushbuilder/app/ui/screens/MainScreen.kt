@@ -1906,6 +1906,13 @@ fun ProfileTab(
     var authError by remember { mutableStateOf<String?>(null) }
     var isAuthLoading by remember { mutableStateOf(false) }
 
+    // Device limit & OTP verification
+    var showOtpDialog by remember { mutableStateOf(false) }
+    var otpInput by remember { mutableStateOf("") }
+    var otpError by remember { mutableStateOf<String?>(null) }
+    var isVerifyingOtp by remember { mutableStateOf(false) }
+    var pendingSession by remember { mutableStateOf<UserSession?>(null) }
+
     var showEditProfileDialog by remember { mutableStateOf(false) }
     var selectedPresetForOptions by remember { mutableStateOf<Preset?>(null) }
     var showDeleteConfirmDialog by remember { mutableStateOf<Preset?>(null) }
@@ -1986,8 +1993,19 @@ fun ProfileTab(
                                 refreshToken = authResp.refreshToken ?: "",
                                 coins = realProfile.coins
                             )
-                            dataStoreManager.saveUserSession(sessionObj)
-                            Toast.makeText(context, "Login Google berhasil!", Toast.LENGTH_SHORT).show()
+                            // Cek batas device
+                            val devices = supabaseManager.getUserDevices(userId)
+                            val deviceAlreadyRegistered = devices.any { it.deviceId == dId }
+                            if (!deviceAlreadyRegistered && devices.size >= 2) {
+                                // Device ke-3 → kirim OTP ke email & minta verifikasi
+                                supabaseManager.sendOtpEmail(userEmail)
+                                pendingSession = sessionObj
+                                showOtpDialog = true
+                            } else {
+                                supabaseManager.upsertDevice(userId, dId, token)
+                                dataStoreManager.saveUserSession(sessionObj)
+                                Toast.makeText(context, "Login Google berhasil!", Toast.LENGTH_SHORT).show()
+                            }
                         } catch (e: Exception) {
                             authError = e.localizedMessage
                         } finally {
@@ -2013,12 +2031,117 @@ fun ProfileTab(
             }
         }
 
+        // ── Dialog verifikasi OTP (device ke-3) ──
+        if (showOtpDialog) {
+            AlertDialog(
+                onDismissRequest = {
+                    if (!isVerifyingOtp) {
+                        showOtpDialog = false
+                        pendingSession = null
+                        otpInput = ""
+                        otpError = null
+                    }
+                },
+                containerColor = Color(0xFF1A1A2E),
+                shape = RoundedCornerShape(20.dp),
+                title = {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                        Icon(Icons.Default.Lock, contentDescription = null, tint = Color(0xFFFF9800), modifier = Modifier.size(36.dp))
+                        Spacer(Modifier.height(8.dp))
+                        Text("Verifikasi Perangkat Baru", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+                    }
+                },
+                text = {
+                    Column {
+                        Text(
+                            text = "Akun ini sudah aktif di 2 perangkat. Kami telah mengirim kode verifikasi ke email:\n\n${pendingSession?.email ?: ""}",
+                            color = Color.LightGray,
+                            fontSize = 14.sp
+                        )
+                        Spacer(Modifier.height(16.dp))
+                        if (otpError != null) {
+                            Text(otpError ?: "", color = Color(0xFFFF6B6B), fontSize = 12.sp)
+                            Spacer(Modifier.height(8.dp))
+                        }
+                        OutlinedTextField(
+                            value = otpInput,
+                            onValueChange = { otpInput = it.take(6) },
+                            placeholder = { Text("Masukkan kode 6 digit", color = Color.White.copy(alpha = 0.4f)) },
+                            singleLine = true,
+                            keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedTextColor = Color.White,
+                                unfocusedTextColor = Color.White,
+                                focusedContainerColor = Color(0xFF252540),
+                                unfocusedContainerColor = Color(0xFF1E1E3A),
+                                focusedBorderColor = Color(0xFFFF9800),
+                                unfocusedBorderColor = Color.White.copy(alpha = 0.2f)
+                            )
+                        )
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            if (otpInput.length < 6) {
+                                otpError = "Kode harus 6 digit."
+                                return@Button
+                            }
+                            isVerifyingOtp = true
+                            otpError = null
+                            scope.launch {
+                                try {
+                                    val sess = pendingSession!!
+                                    val dId = android.provider.Settings.Secure.getString(context.contentResolver, android.provider.Settings.Secure.ANDROID_ID)
+                                    // Verifikasi OTP via Supabase
+                                    supabaseManager.verifyOtpCode(sess.email, otpInput)
+                                    // OTP valid → daftarkan device & login
+                                    supabaseManager.upsertDevice(sess.userId, dId, sess.accessToken)
+                                    dataStoreManager.saveUserSession(sess)
+                                    showOtpDialog = false
+                                    pendingSession = null
+                                    otpInput = ""
+                                    Toast.makeText(context, "Perangkat berhasil diverifikasi!", Toast.LENGTH_SHORT).show()
+                                } catch (e: Exception) {
+                                    otpError = "Kode salah atau kadaluarsa. Coba lagi."
+                                } finally {
+                                    isVerifyingOtp = false
+                                }
+                            }
+                        },
+                        enabled = !isVerifyingOtp,
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        if (isVerifyingOtp) {
+                            CircularProgressIndicator(modifier = Modifier.size(18.dp), color = Color.White, strokeWidth = 2.dp)
+                        } else {
+                            Text("Verifikasi", color = Color.White, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = {
+                        showOtpDialog = false
+                        pendingSession = null
+                        otpInput = ""
+                        otpError = null
+                    }) {
+                        Text("Batal", color = Color.Gray)
+                    }
+                }
+            )
+        }
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
             // Header Image with bg_welcome_header
             item {
                 Box(
@@ -2217,8 +2340,18 @@ fun ProfileTab(
                                             refreshToken = loginResp.refreshToken ?: "",
                                             coins = realProfile.coins
                                         )
-                                        dataStoreManager.saveUserSession(sessionObj)
-                                        Toast.makeText(context, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                                        // Cek batas device
+                                        val devices = supabaseManager.getUserDevices(userId)
+                                        val deviceAlreadyRegistered = devices.any { it.deviceId == dId }
+                                        if (!deviceAlreadyRegistered && devices.size >= 2) {
+                                            supabaseManager.sendOtpEmail(emailInput)
+                                            pendingSession = sessionObj
+                                            showOtpDialog = true
+                                        } else {
+                                            supabaseManager.upsertDevice(userId, dId, token)
+                                            dataStoreManager.saveUserSession(sessionObj)
+                                            Toast.makeText(context, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                                        }
                                     }
                                 } catch (e: Exception) {
                                     authError = e.localizedMessage

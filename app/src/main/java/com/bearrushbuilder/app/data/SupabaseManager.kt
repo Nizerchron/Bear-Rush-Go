@@ -706,6 +706,66 @@ class SupabaseManager(
         }
     }
 
+    suspend fun getUserDevices(userId: String): List<UserDevice> = withContext(Dispatchers.IO) {
+        val response = client.get("$supabaseUrl/rest/v1/user_devices?user_id=eq.$userId") {
+            header("apikey", supabaseKey)
+        }
+        if (response.status.isSuccess()) {
+            response.body()
+        } else {
+            emptyList()
+        }
+    }
+
+    suspend fun upsertDevice(userId: String, deviceId: String, token: String? = null): Boolean = withContext(Dispatchers.IO) {
+        val now = java.time.Instant.now().toString()
+        val response = client.post("$supabaseUrl/rest/v1/user_devices") {
+            header("apikey", supabaseKey)
+            header("Prefer", "resolution=merge-duplicates")
+            if (!token.isNullOrEmpty()) header("Authorization", "Bearer $token")
+            contentType(ContentType.Application.Json)
+            setBody(UserDevice(userId = userId, deviceId = deviceId, lastLogin = now))
+        }
+        response.status.isSuccess()
+    }
+
+    suspend fun deleteDevice(userId: String, deviceId: String, token: String? = null): Boolean = withContext(Dispatchers.IO) {
+        val response = client.delete("$supabaseUrl/rest/v1/user_devices?user_id=eq.$userId&device_id=eq.$deviceId") {
+            header("apikey", supabaseKey)
+            if (!token.isNullOrEmpty()) header("Authorization", "Bearer $token")
+        }
+        response.status.isSuccess()
+    }
+
+    suspend fun sendOtpEmail(email: String): Boolean = withContext(Dispatchers.IO) {
+        val response = client.post("$supabaseUrl/auth/v1/otp") {
+            header("apikey", supabaseKey)
+            contentType(ContentType.Application.Json)
+            setBody(kotlinx.serialization.json.buildJsonObject {
+                put("email", kotlinx.serialization.json.JsonPrimitive(email))
+                put("create_user", kotlinx.serialization.json.JsonPrimitive(false))
+            })
+        }
+        response.status.isSuccess()
+    }
+
+    suspend fun verifyOtpCode(email: String, token: String): AuthResponse = withContext(Dispatchers.IO) {
+        val response = client.post("$supabaseUrl/auth/v1/verify") {
+            header("apikey", supabaseKey)
+            contentType(ContentType.Application.Json)
+            setBody(kotlinx.serialization.json.buildJsonObject {
+                put("email", kotlinx.serialization.json.JsonPrimitive(email))
+                put("token", kotlinx.serialization.json.JsonPrimitive(token))
+                put("type", kotlinx.serialization.json.JsonPrimitive("magiclink"))
+            })
+        }
+        if (response.status.isSuccess()) {
+            response.body()
+        } else {
+            throw Exception("Kode verifikasi salah atau sudah kadaluarsa.")
+        }
+    }
+
     companion object {
         val GITHUB_TOKEN = BuildConfig.GITHUB_TOKEN
     }
@@ -747,5 +807,13 @@ data class GitHubDeleteRequest(
     val message: String,
     val sha: String,
     val branch: String = "main"
+)
+
+@Serializable
+data class UserDevice(
+    val id: Long? = null,
+    @SerialName("user_id") val userId: String,
+    @SerialName("device_id") val deviceId: String,
+    @SerialName("last_login") val lastLogin: String? = null
 )
 

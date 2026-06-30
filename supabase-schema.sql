@@ -95,3 +95,19 @@ ALTER TABLE preset_comments ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Comments are viewable by everyone" ON preset_comments FOR SELECT USING (true);
 CREATE POLICY "Users can post comments" ON preset_comments FOR INSERT WITH CHECK (auth.uid() = user_id OR user_id IS NULL);
+
+-- Tabel user_devices untuk membatasi maksimal 2 device per akun
+CREATE TABLE IF NOT EXISTS user_devices (
+  id BIGSERIAL PRIMARY KEY,
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  device_id TEXT NOT NULL,
+  last_login TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(user_id, device_id)
+);
+
+ALTER TABLE user_devices ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view own devices" ON user_devices FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert own devices" ON user_devices FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can update own devices" ON user_devices FOR UPDATE USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can delete own devices" ON user_devices FOR DELETE USING (auth.uid() = user_id);
