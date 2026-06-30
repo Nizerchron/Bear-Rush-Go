@@ -5776,8 +5776,14 @@ fun CreatorUploadScreen(
                 ) && (selectedImageUris.isEmpty() || selectedImageUris.size >= 3)
             }
 
+            val isDebugFakeSession = remember(token) { token == "debug-token" || token.isBlank() }
+
             Button(
                 onClick = {
+                    if (isDebugFakeSession) {
+                        Toast.makeText(context, "Mode Debug: Harap login dengan akun asli terlebih dahulu untuk menyimpan ke database Supabase!", Toast.LENGTH_LONG).show()
+                        return@Button
+                    }
                     if (name.isBlank() || description.isBlank()) {
                         Toast.makeText(context, "Nama dan deskripsi tidak boleh kosong!", Toast.LENGTH_SHORT).show()
                         return@Button
