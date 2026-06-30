@@ -5236,7 +5236,7 @@ fun CreatorUploadScreen(
         contract = ActivityResultContracts.GetMultipleContents()
     ) { uris: List<Uri> ->
         if (uris.isNotEmpty()) {
-            selectedImageUris = uris
+            selectedImageUris = (selectedImageUris + uris).distinct()
         }
     }
 
@@ -5440,22 +5440,44 @@ fun CreatorUploadScreen(
                         Box(modifier = Modifier.fillMaxSize()) {
                             LazyRow(
                                 modifier = Modifier.fillMaxSize().padding(8.dp),
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(10.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 items(selectedImageUris) { uri ->
-                                    Surface(
-                                        shape = RoundedCornerShape(8.dp),
+                                    Box(
                                         modifier = Modifier
                                             .fillMaxHeight()
                                             .aspectRatio(16f / 9f)
                                     ) {
-                                        AsyncImage(
-                                            model = uri,
-                                            contentDescription = "Preview Gambar",
-                                            contentScale = ContentScale.Crop,
+                                        Surface(
+                                            shape = RoundedCornerShape(8.dp),
                                             modifier = Modifier.fillMaxSize()
-                                        )
+                                        ) {
+                                            AsyncImage(
+                                                model = uri,
+                                                contentDescription = "Preview Gambar",
+                                                contentScale = ContentScale.Crop,
+                                                modifier = Modifier.fillMaxSize()
+                                            )
+                                        }
+                                        // Delete Badge
+                                        IconButton(
+                                            onClick = {
+                                                selectedImageUris = selectedImageUris.filter { it != uri }
+                                            },
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(4.dp)
+                                                .size(24.dp)
+                                                .background(Color.Black.copy(alpha = 0.6f), CircleShape)
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Default.Close,
+                                                contentDescription = "Hapus Gambar",
+                                                tint = Color.White,
+                                                modifier = Modifier.size(14.dp)
+                                            )
+                                        }
                                     }
                                 }
                             }
@@ -5492,7 +5514,7 @@ fun CreatorUploadScreen(
                                     onClick = { imagePickerLauncher.launch("image/*") },
                                     colors = ButtonDefaults.textButtonColors(contentColor = Color.White)
                                 ) {
-                                    Text("Ganti", color = Color(0xFFFF9800), fontSize = 11.sp)
+                                    Text("Tambah", color = Color(0xFFFF9800), fontSize = 11.sp)
                                 }
                             }
                         }
@@ -5579,9 +5601,11 @@ fun CreatorUploadScreen(
                                 fontSize = 13.sp
                             )
                             Text(
-                                text = "Pilih minimal 3 gambar (rasio 16:9)",
+                                text = "Ketuk untuk menambah satu per satu, atau tahan gambar pertama di galeri untuk memilih banyak sekaligus.",
                                 fontSize = 11.sp,
-                                color = Color.Gray
+                                color = Color.Gray,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.padding(horizontal = 16.dp)
                             )
                         }
                     }
