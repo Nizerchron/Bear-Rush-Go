@@ -585,6 +585,41 @@ class SupabaseManager(
             throw Exception("Gagal menyimpan preset ke database: ${response.bodyAsText()}")
         }
     }
+
+    suspend fun uploadToGitHub(
+        path: String,
+        bytes: ByteArray,
+        gitHubToken: String
+    ): String = withContext(Dispatchers.IO) {
+        val repoOwner = "Nizerchron"
+        val repoName = "Bear-Rush-Go"
+        val url = "https://api.github.com/repos/$repoOwner/$repoName/contents/$path"
+
+        val base64Content = android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP)
+
+        val requestBody = GitHubPutRequest(
+            message = "Upload $path via Bear Rush Builder",
+            content = base64Content
+        )
+
+        val response = client.put(url) {
+            header("Accept", "application/vnd.github+json")
+            header("Authorization", "Bearer $gitHubToken")
+            header("X-GitHub-Api-Version", "2022-11-28")
+            contentType(ContentType.Application.Json)
+            setBody(requestBody)
+        }
+
+        if (!response.status.isSuccess()) {
+            throw Exception("Gagal mengunggah ke GitHub ($path): ${response.bodyAsText()}")
+        }
+
+        "https://raw.githubusercontent.com/$repoOwner/$repoName/main/$path"
+    }
+
+    companion object {
+        const val GITHUB_TOKEN = "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+    }
 }
 
 @Serializable
@@ -608,5 +643,12 @@ data class PresetInsertRequest(
     val downloads: Long = 0,
     val loves: Long = 0,
     val views: Long = 0
+)
+
+@Serializable
+data class GitHubPutRequest(
+    val message: String,
+    val content: String,
+    val branch: String = "main"
 )
 

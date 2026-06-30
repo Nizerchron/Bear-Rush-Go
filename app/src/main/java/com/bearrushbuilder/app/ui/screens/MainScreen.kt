@@ -5049,7 +5049,7 @@ fun CreatorUploadScreen(
     var selectedFileName by remember { mutableStateOf("") }
     var selectedFileSize by remember { mutableStateOf(0L) }
 
-    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
+    var selectedImageUris by remember { mutableStateOf<List<Uri>>(emptyList()) }
 
     var isUploading by remember { mutableStateOf(false) }
 
@@ -5065,10 +5065,10 @@ fun CreatorUploadScreen(
     }
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            selectedImageUri = uri
+        contract = ActivityResultContracts.GetMultipleContents()
+    ) { uris: List<Uri> ->
+        if (uris.isNotEmpty()) {
+            selectedImageUris = uris
         }
     }
 
@@ -5237,6 +5237,13 @@ fun CreatorUploadScreen(
                     color = Color.White
                 )
 
+                Text(
+                    text = "2. Gambar Preview (Minimal 3 Gambar)",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    color = Color.White
+                )
+
                 Surface(
                     onClick = { imagePickerLauncher.launch("image/*") },
                     modifier = Modifier
@@ -5244,22 +5251,37 @@ fun CreatorUploadScreen(
                         .aspectRatio(16f / 9f),
                     shape = RoundedCornerShape(16.dp),
                     color = Color(0xFF1E1E1E),
-                    border = BorderStroke(1.dp, if (selectedImageUri != null) Color(0xFF4CAF50) else Color.DarkGray)
+                    border = BorderStroke(1.dp, if (selectedImageUris.size >= 3) Color(0xFF4CAF50) else if (selectedImageUris.isNotEmpty()) Color(0xFFFF9800) else Color.DarkGray)
                 ) {
-                    if (selectedImageUri != null) {
+                    if (selectedImageUris.isNotEmpty()) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                            AsyncImage(
-                                model = selectedImageUri,
-                                contentDescription = "Preview Gambar",
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier.fillMaxSize()
-                            )
+                            LazyRow(
+                                modifier = Modifier.fillMaxSize().padding(8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                items(selectedImageUris) { uri ->
+                                    Surface(
+                                        shape = RoundedCornerShape(8.dp),
+                                        modifier = Modifier
+                                            .fillMaxHeight()
+                                            .aspectRatio(16f / 9f)
+                                    ) {
+                                        AsyncImage(
+                                            model = uri,
+                                            contentDescription = "Preview Gambar",
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier.fillMaxSize()
+                                        )
+                                    }
+                                }
+                            }
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .background(
                                         Brush.verticalGradient(
-                                            colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.6f))
+                                            colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.5f))
                                         )
                                     )
                             )
@@ -5270,13 +5292,18 @@ fun CreatorUploadScreen(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.CheckCircle,
+                                    imageVector = if (selectedImageUris.size >= 3) Icons.Default.CheckCircle else Icons.Default.CloudUpload,
                                     contentDescription = null,
-                                    tint = Color(0xFF4CAF50),
+                                    tint = if (selectedImageUris.size >= 3) Color(0xFF4CAF50) else Color(0xFFFF9800),
                                     modifier = Modifier.size(16.dp)
                                 )
                                 Spacer(modifier = Modifier.width(4.dp))
-                                Text("Terpilih", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = "Terpilih: ${selectedImageUris.size} ${if (selectedImageUris.size < 3) "(Min 3)" else ""}",
+                                    color = Color.White,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 TextButton(
                                     onClick = { imagePickerLauncher.launch("image/*") },
@@ -5476,8 +5503,7 @@ fun CreatorUploadScreen(
             Button(
                 onClick = {
                     val fileUri = selectedFileUri
-                    val imageUri = selectedImageUri
-                    if (name.isBlank() || description.isBlank() || fileUri == null || imageUri == null) {
+                    if (name.isBlank() || description.isBlank() || fileUri == null || selectedImageUris.size < 3) {
                         Toast.makeText(context, "Harap lengkapi semua data wajib!", Toast.LENGTH_SHORT).show()
                         return@Button
                     }
@@ -5486,38 +5512,37 @@ fun CreatorUploadScreen(
                         try {
                             val fileBytes = getBytesFromUri(context, fileUri)
                                 ?: throw Exception("Gagal membaca file preset")
-                            val imageBytes = getBytesFromUri(context, imageUri)
-                                ?: throw Exception("Gagal membaca gambar preview")
 
-                            val uniqueId = java.util.UUID.randomUUID().toString()
-                            val fileExtension = selectedFileName.substringAfterLast('.', "bin")
-                            val remoteFilePath = "files/${uniqueId}.${fileExtension}"
-                            val remoteImagePath = "previews/${uniqueId}.jpg"
+                            val cleanPresetName = name.trim().lowercase().replace(Regex("[^a-zA-Z0-9]+"), "_")
 
-                            // Upload preset file
-                            val downloadUrl = supabaseManager.uploadStorageFile(
-                                bucket = "presets",
-                                path = remoteFilePath,
+                            // Upload preset file (.bin) to superbear/bins/
+                            val downloadUrl = supabaseManager.uploadToGitHub(
+                                path = "superbear/bins/${name}.bin",
                                 bytes = fileBytes,
-                                mimeType = "application/octet-stream",
-                                token = token
+                                gitHubToken = SupabaseManager.GITHUB_TOKEN
                             )
 
-                            // Upload preview image
-                            val previewUrl = supabaseManager.uploadStorageFile(
-                                bucket = "presets",
-                                path = remoteImagePath,
-                                bytes = imageBytes,
-                                mimeType = "image/jpeg",
-                                token = token
-                            )
+                            // Upload preview images to superbear/
+                            val previewUrls = selectedImageUris.mapIndexed { index, imgUri ->
+                                val imgBytes = getBytesFromUri(context, imgUri)
+                                    ?: throw Exception("Gagal membaca gambar pratinjau ke-${index + 1}")
+                                val imgExt = context.contentResolver.getType(imgUri)?.substringAfterLast('/') ?: "jpg"
+                                val remoteImagePath = "superbear/pre_${cleanPresetName}_${index + 1}.${imgExt}"
+
+                                supabaseManager.uploadToGitHub(
+                                    path = remoteImagePath,
+                                    bytes = imgBytes,
+                                    gitHubToken = SupabaseManager.GITHUB_TOKEN
+                                )
+                            }
+                            val previewUrlString = previewUrls.joinToString(",")
 
                             // Insert Preset into Database Table
                             val insertRequest = com.bearrushbuilder.app.data.PresetInsertRequest(
                                 name = name,
                                 description = description,
                                 category = selectedCategory,
-                                previewUrl = previewUrl,
+                                previewUrl = previewUrlString,
                                 downloadUrl = downloadUrl,
                                 isFree = isFree,
                                 price = priceString.toLongOrNull() ?: 0L,
@@ -5535,7 +5560,7 @@ fun CreatorUploadScreen(
                         }
                     }
                 },
-                enabled = !isUploading && name.isNotBlank() && description.isNotBlank() && selectedFileUri != null && selectedImageUri != null,
+                enabled = !isUploading && name.isNotBlank() && description.isNotBlank() && selectedFileUri != null && selectedImageUris.size >= 3,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFFF9800),
                     disabledContainerColor = Color(0xFFFF9800).copy(alpha = 0.5f)
