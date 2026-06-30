@@ -35,7 +35,8 @@ class PresetRepository(supabaseUrl: String, supabaseKey: String) {
     companion object {
         val categories = listOf(
             Category(id = 1, name = "Nature"),
-            Category(id = 2, name = "Structure")
+            Category(id = 2, name = "Structure"),
+            Category(id = 3, name = "Gameplay")
         )
     }
 }

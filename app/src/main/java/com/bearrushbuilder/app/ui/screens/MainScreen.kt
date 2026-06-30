@@ -5361,7 +5361,7 @@ fun CreatorUploadScreen(
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        val categories = listOf("Nature", "Structure")
+                        val categories = listOf("Nature", "Structure", "Gameplay")
                         categories.forEach { cat ->
                             val isSelected = selectedCategory == cat
                             Box(
